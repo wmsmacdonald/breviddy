@@ -1,0 +1,186 @@
+$primary-color: #a63131;
+$secondary-color: #34344a;
+$dark-grey: #515459;
+$very-light: #fbf4f4;
+$banner-button-border-radius: 0.3em;
+body {
+  background: url('/img/brushed.png');
+}
+#banner {
+  width: 100%;
+  text-align: center;
+  background-color: $primary-color;
+  padding: 10px 0;
+}
+#banner-inner {
+  display: inline-block;
+}
+#submit-quote-button {
+  display: inline-block;
+  vertical-align: top;
+  span {
+
+  }
+
+}
+#logo-box {
+  display: inline-block;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  text-align: center;
+
+
+  img {
+    height: 2em;
+    min-width: 6em;
+    min-height: 1em;
+    width: 12em;
+    background-color: #fff;
+  }
+}
+
+#submit-quote-button {
+
+  display: inline-block;
+
+  height: 2em;
+  padding: 0;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+
+  border-radius: $banner-button-border-radius;
+  border-bottom: 0px;
+  border-right: 0px;
+  color: $secondary-color;
+  background: $very-light;
+
+  border-top: 0.1em solid #aaaaaa;
+}
+#account-wrapper {
+  display: inline-block;
+  vertical-align: top;
+
+  #profile-button {
+    display: inline-block;
+    background-color: #fbf4f4;
+    height: 2em;
+    padding: 0 0.8em;
+    border-top: 0.1em solid #aaaaaa;
+    border-radius: $banner-button-border-radius;
+    box-sizing: border-box;
+    i {
+      color: $secondary-color;
+    }
+  }
+  #account-dropdown {
+    position:absolute;
+    background: $very-light;
+  }
+
+  #logout-button {
+
+  }
+  #sign-up-button {
+    display: inline-block;
+    height: 2em;
+    padding: 0 0.8em;
+    border-radius: $banner-button-border-radius 0 0 $banner-button-border-radius;
+    box-sizing: border-box;
+    border-bottom: 0px;
+    border-right: 0px;
+    color: $secondary-color;
+    background-color: #fbf4f4;
+    border-top: 0.1em solid #aaaaaa;
+
+  }
+  #login-button {
+    background-color: #fbf4f4;
+    display: inline-block;
+    height: 2em;
+    padding: 0 0.8em;
+    border-top: 0.1em solid #aaaaaa;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border-radius: 0 $banner-button-border-radius $banner-button-border-radius 0;
+    border-left: 0.1em solid #aaaaaa;
+    border-bottom: 0px;
+    border-right: 0px;
+    color: $secondary-color;
+  }
+
+}
+.alert span {
+  cursor: pointer;
+  float: right;
+}
+h3#motto {
+  text-align: center;
+  color: $secondary-color;
+  font-family: 'Cabin','sans-serif';
+  margin: 0.8em 0 1em;
+  padding: 0;
+}
+.banner-button {
+}
+.banner-button-selected {
+  background: linear-gradient(#f5f1ef, #d5d1cf) !important;
+  border-left-color: #d5d1cf;
+}
+.mybtn:focus {
+  outline: none !important;
+}
+#search-super-box {
+  text-align: center;
+}
+#search-box {
+  display: inline-block;
+}
+#search-input {
+  border: 2px solid #868898;
+  border-radius: 0.4em;
+  padding: 0 0.7em;
+  outline: none;
+  width: 478px;
+  height: 2em;
+  font-size: 1.2em;
+  background-color: #fbf4f4;
+}
+#search-icon {
+  position: absolute;
+  font-size: 1.5em;
+  overflow: visible;
+  margin-left: -1.55em;
+  margin-top: 0.03em;
+  color: $secondary-color;
+  border: none;
+  background: none;
+}
+#quotes-super-box {
+  text-align: center;
+}
+#quotes-box {
+}
+.quote-box {
+  background-color: #fbf4f4;
+  padding: 14px;
+  border-radius: 0.3em;
+  display: inline-block;
+  margin: 0 0 2em 0;
+}
+.caption-box {
+  width: 450px;
+  background-color: $secondary-color;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 5px;
+  color: #fff;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.6em;
+}
+.ytplayer {
+  width: 450px;
+  height: 300px;
+}
+#full-video-icon {
+  font-stretch: expanded;
+}

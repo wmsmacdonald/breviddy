@@ -1,0 +1,25 @@
+<%= form_for :quote, url: quotes_path do |f| %>
+    <p>
+      <%= f.label :url %><br>
+      <%= f.text_field :url %>
+    </p>
+
+    <p>
+      <%= f.label :caption %><br>
+      <%= f.text_field :caption %>
+    </p>
+
+    <p>
+      <%= f.label :start %><br>
+      <%= f.text_field :start %>
+    </p>
+
+    <p>
+      <%= f.label :end %><br>
+      <%= f.text_field :end %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
