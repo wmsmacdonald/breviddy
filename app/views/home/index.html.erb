@@ -12,7 +12,8 @@
 <script type="text/javascript">
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
+    scriptArray = document.getElementsByTagName('script')
+    var firstScriptTag = scriptArray[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 </script>
 <div id="quotes-super-box">
@@ -33,12 +34,8 @@
 </div>
 
 <script type="text/javascript">
-    if (typeof youtube_api_init != 'undefined') {
-        onYouTubeIframeAPIReady();
-    }
 
     function onYouTubePlayerAPIReady() {
-        console.log("YT api ready");
         <% @quotes.each do |quote| %>
         <% urlid = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(quote.url)[1] %>
         <% id = quote.id %>
@@ -91,5 +88,7 @@
             player.playVideo();
         }
     }
+    $(document).ready(onYouTubePlayerAPIReady)
+    $(document).on('page:load', onYouTubePlayerAPIReady)
 
 </script>
