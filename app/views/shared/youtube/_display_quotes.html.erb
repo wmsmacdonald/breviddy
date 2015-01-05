@@ -1,0 +1,19 @@
+
+
+<div id="quotes-super-box">
+    <div id="quotes-box"><!--
+        <% quotes.each do |quote| %>
+            <%= render partial: "shared/youtube/quote_box", locals: {quote: quote} %>
+        <% end %>
+    --></div>
+</div>
+
+<script type="text/javascript" >
+    function onYouTubePlayerAPIReady() {
+        <% quotes.each do |quote| %>
+        <%= render partial: "shared/youtube/quote_player_js", locals: {quote: quote} %>
+        <% end %>
+    }
+</script>
+
+<%= render "shared/youtube/yt_js" %>

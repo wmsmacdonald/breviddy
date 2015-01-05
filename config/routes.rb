@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
   match 'users/:username' => 'users#show', via: :get
 
-  match 'users/me' => 'users#me', via: :get
-
   match 'quotes/' => 'home#index', via: :get
 
 

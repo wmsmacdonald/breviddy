@@ -163,7 +163,7 @@ h3#motto {
 .quote-box {
   background-color: #fbf4f4;
   padding: 14px;
-  border-radius: 0.3em;
+  border-radius: 0.2em;
   display: inline-block;
   margin: 0 0 2em 0;
 }
@@ -181,6 +181,48 @@ h3#motto {
   width: 450px;
   height: 300px;
 }
+.quote-button-box {
+  margin-top: 0.5em;
+  border-top: 2px solid #ccc5c5;
+  border-bottom: 2px solid #ccc5c5;
+  border-radius: 0.1em;
+}
+.quote-button {
+  height: 2.5em;
+  color: #333333;
+  border-radius: 0;
+  background-color: $very-light;
+  border: none;
+  border-left: 2px solid #ccc5c5;
+
+}
+/*.quote-button span:hover {
+  text-decoration: underline;
+
+}*/
+
 #full-video-icon {
   font-stretch: expanded;
+}
+.play-full-button {
+  width: 30%;
+  img {
+    height: 12px;
+    padding-bottom: 2px;
+  }
+}
+.source-button {
+  width: 25%;
+}
+.user-button {
+  width: 25%;
+  overflow: hidden;
+  img {
+    height: 15px;
+    padding-bottom: 2px;
+  }
+}
+.share-button {
+  width: 20%;
+  border-right: 2px solid #ccc5c5;
 }

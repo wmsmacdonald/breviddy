@@ -1,0 +1,33 @@
+        window['hasPaused_<%= quote.id %>'] = false;
+        window['videotime_<%= quote.id %>'] = 0;
+        player_<%= quote.id %> = new YT.Player('ytplayer_<%= quote.id %>', {
+            height: '300',
+            width: '450',
+            videoId: '<%= quote.getUrlId %>',
+            playerVars: {'iv_load_policy': 3, 'controls': 0, 'rel': 0, 'showinfo': 0},
+            events: {
+                'onReady': function() {
+                    onPlayerReady(<%= quote.id %>, player_<%= quote.id %>, <%= quote.start %>, <%= quote.end %>);
+                },
+                'onStateChange': function(e) {
+                    onPlayerStateChange(e, <%= quote.id %>, player_<%= quote.id %>, <%= quote.start %>);
+                }
+            }
+        });
+
+        $('#play-full-button_<%= quote.id %>').click(function() {
+            $('#ytplayer_<%= quote.id %>').replaceWith('<div id="ytplayer_<%= quote.id %>" class="ytplayer"></div>');
+            player_<%= quote.id %> = new YT.Player('ytplayer_<%= quote.id %>', {
+                height: '300',
+                width: '450',
+                videoId: '<%= quote.getUrlId %>',
+                playerVars: {'iv_load_policy': 3},
+                events: {
+                    'onReady': function() {
+                        player_<%= quote.id %>.unMute();
+                        player_<%= quote.id %>.playVideo();
+                    }
+                }
+            });
+
+        });

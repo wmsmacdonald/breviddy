@@ -12,6 +12,7 @@ class QuotesController < ApplicationController
 
   def show
     @quote = Quote.find(params[:id])
+    set_quote_dependents(@quote)
   end
 
   def index

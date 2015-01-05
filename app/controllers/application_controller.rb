@@ -7,4 +7,33 @@ class ApplicationController < ActionController::Base
   def not_found(msg = 'Not found.')
     raise ActionController::RoutingError.new(msg)
   end
+
+  def set_username(quoteStructure)
+    if quoteStructure.respond_to?(:each)
+      quoteStructure.each do |quote|
+        quote.setUsername(User.find(quote.user_id).username)
+      end
+    else
+      quoteStructure.setUsername(User.find(quoteStructure.user_id).username)
+    end
+
+  end
+  def set_quote_dependents(quoteStructure)
+
+    if quoteStructure.respond_to?(:each)
+
+      quoteStructure.each do |quote|
+        quote.setUsername(User.find(quote.user_id).username)
+
+        urlid = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(quote.url)[1]
+        quote.setUrlId(urlid)
+      end
+
+    else
+      quoteStructure.setUsername(User.find(quoteStructure.user_id).username)
+      urlid = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(quoteStructure.url)[1]
+      quoteStructure.setUrlId(urlid)
+    end
+
+  end
 end

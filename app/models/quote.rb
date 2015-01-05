@@ -16,4 +16,12 @@ class Quote < ActiveRecord::Base
     @username
   end
 
+  def setUrlId(urlId)
+    @urlId = urlId
+  end
+  def getUrlId()
+    @urlId
+  end
+
+
 end

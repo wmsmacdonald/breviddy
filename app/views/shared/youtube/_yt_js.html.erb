@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    scriptArray = document.getElementsByTagName('script')
+    var firstScriptTag = scriptArray[scriptArray.length - 1];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onPlayerStateChange(event, id, player, start) {
+        if (event.data == 1 &&  !window['hasPaused_'+id]) {
+            player.pauseVideo();
+            window['hasPaused_'+id] = true;
+        }
+        else if (event.data == 0) {
+            player.seekTo(start);
+        }
+    }
+    function onPlayerReady(id, player, start, end) {
+        player.seekTo(start);
+        player.mute();
+        $('#ytplayer_'+id).hover(function () {
+            player.playVideo();
+        }, function () {
+            player.pauseVideo();
+        });
+        function updateTime() {
+            newVideotime = player.getCurrentTime();
+            if (newVideotime != window['videotime_'+id]) {
+                onProgress(newVideotime, player, start, end);
+            }
+        }
+        setInterval(updateTime, 100);
+    }
+    function onProgress(currentTime, player, start, end) {
+        if (currentTime > end) {
+            player.seekTo(start);
+            player.playVideo();
+        }
+    }
+
+    $('.quote-button').hover(function() {
+        $(this).children("span").css("text-decoration","underline");
+    },function() {
+        $(this).children("span").css("text-decoration","none");
+    });
+
+
+    /*$(document).ready(onYouTubePlayerAPIReady);
+    $(document).on('page:load', onYouTubePlayerAPIReady);*/
+</script>

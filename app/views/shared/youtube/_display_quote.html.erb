@@ -1,0 +1,21 @@
+<%= render "shared/youtube/yt_js" %>
+
+<div id="quotes-super-box">
+  <div id="quotes-box"><!--
+        <% def single_quote_html(quote) %>
+            <%= render partial: "shared/youtube/quote_box", locals: {quote: quote} %>
+        <% end %>
+        <% single_quote_html(quote) %>
+    --></div>
+</div>
+
+<script type="text/javascript">
+
+    function onYouTubePlayerAPIReady() {
+        <% def single_quote_js(quote) %>
+            <%= render partial: "shared/youtube/quote_player_js", locals: {quote: quote} %>
+        <% end %>
+        <% single_quote_js(quote) %>
+    }
+
+</script>
