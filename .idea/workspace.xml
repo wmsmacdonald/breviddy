@@ -62,8 +62,8 @@
       <file leaf-file-name="devise.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/initializers/devise.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.90228015" vertical-offset="3054" max-vertical-offset="4020">
-              <caret line="259" column="2" selection-start-line="259" selection-start-column="2" selection-end-line="259" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.16938111" vertical-offset="3069" max-vertical-offset="4035">
+              <caret line="215" column="68" selection-start-line="215" selection-start-column="68" selection-end-line="215" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -1212,8 +1212,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/devise.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90228015" vertical-offset="3054" max-vertical-offset="4020">
-          <caret line="259" column="2" selection-start-line="259" selection-start-column="2" selection-end-line="259" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.16938111" vertical-offset="3069" max-vertical-offset="4035">
+          <caret line="215" column="68" selection-start-line="215" selection-start-column="68" selection-end-line="215" selection-end-column="68" />
           <folding />
         </state>
       </provider>
