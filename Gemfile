@@ -34,6 +34,8 @@ gem 'autoprefixer-rails'
 
 gem 'kaminari'
 
+gem 'rest-client'
+
 #gem 'searchkick'
 
 #gem 'elasticsearch-model'

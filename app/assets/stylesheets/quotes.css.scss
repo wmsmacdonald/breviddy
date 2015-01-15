@@ -1,3 +1,156 @@
 // Place all the styles related to the quotes controller here.
 // They will automatically be included in application.css.sass.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$secondary-color: #34344a;
+$very-light: #fbf4f4;
+#upper-spacer {
+  height: 100px;
+}
+#url-info-box {
+  text-align: center;
+}
+#url-box {
+  text-align: center;
+}
+#url-input {
+  width: 400px;
+}
+#seek-slider-box {
+  margin-bottom: -55px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#cut-slider-box {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.irs-slider.from {
+  background: url('/img/bracket.png') no-repeat center !important;
+  height: 35px;
+  width: 9px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: -3px;
+
+}
+.irs-to, .irs-from {
+  background-color: #34344a !important;
+}
+.irs-slider.to {
+  background: url('/img/bracket.png') no-repeat center !important;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  width: 9px;
+  height: 35px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: -3px;
+  margin-left: -3px;
+}
+.irs-bar {
+  border-color: #A63131 !important;
+  background: #A63131 !important;
+}
+.irs-slider.single {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+}
+.irs-single {
+  background: $secondary-color !important;
+}
+#super-box {
+  text-align: center;
+}
+#url-instructions {
+  font-family: 'Cabin', sans-serif;
+  color: $secondary-color;
+}
+#url-input {
+  font-size: 1.5em;
+  width: 600px;
+  border-radius: 5px;
+  outline: none;
+  border-top: 2px solid #bbb7b5;
+  border-left: 2px solid #bbb7b5;
+  border-bottom: 1px solid #ccc8c6;
+  border-right: 1px solid #ccc8c6;
+  margin-bottom: 10px;
+  padding: 5px 10px 5px 10px;
+}
+#trim-instructions {
+  font-family: 'Cabin', sans-serif;
+  color: $secondary-color;
+}
+#control-buttons-box {
+  display: inline-block;
+  vertical-align: bottom;
+  background-color: $secondary-color;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+#toggle-play-button {
+  display: inline-block;
+  background-color: $secondary-color;
+  color: $very-light;
+  border: none;
+  border-right: 1px solid #4d4e59;
+  outline: none;
+  width: 38px;
+  padding-right: 10px;
+  :hover {
+    color: #b1b2b9;
+  }
+}
+#toggle-mute-button {
+  display: inline-block;
+  background-color: $secondary-color;
+  color: $very-light;
+  border: none;
+  outline: none;
+  width: 41px;
+  padding-left: 9px;
+}
+#toggle-mute-button:hover i {
+  color: #b1b2b9;
+}
+#sliders-box {
+  display: inline-block;
+}
+.fa-close {
+  position: relative;
+  top: -0.33em;
+}
+#caption-input {
+  display: none;
+  width: 450px;
+  background-color: $secondary-color;
+  text-align: center;
+  padding: 10px 5px;
+  color: #fff;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.6em;
+  border: none;
+  outline: none;
+}
+#save-quote-button {
+  font-family: 'Cabin';
+  padding: 10px 80px;
+  margin-top: -10px;
+  background: linear-gradient(#606086, $secondary-color);
+  color: $very-light;
+  border: none !important;
+  border-radius: 5px;
+  font-size: 1.3em;
+}
+#save-quote-button:hover {
+  background: linear-gradient($secondary-color, #606086);
+}

@@ -34,10 +34,10 @@
   </div>
 </div>
 <% if notice %>
-    <p class="alert alert-success"><%= notice %><span id="close-alert-button" class="glyphicon glyphicon-remove"></span></p>
+    <p class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %></p>
 <% end %>
 <% if alert %>
-    <p class="alert alert-danger"><%= alert %><span id="close-alert-button" class="glyphicon glyphicon-remove"></span></p>
+    <p class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= alert %></p>
 <% end %>
 <script type="text/javascript">
   $('#close-alert-button').click(function() {

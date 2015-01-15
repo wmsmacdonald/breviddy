@@ -6,8 +6,13 @@ class QuotesController < ApplicationController
   def create
     @quote = current_user.quotes.create(quote_params)
 
-    @quote.save
-    redirect_to @quote
+    if @quote.save
+      redirect_to @quote
+    else
+      key, value = @quote.errors.messages.first
+      redirect_to "/quotes/new", alert: "Error: '#{key.capitalize}' field  #{value[0]}."
+    end
+
   end
 
   def show
@@ -25,8 +30,13 @@ class QuotesController < ApplicationController
 
   private
   def quote_params
-    hash = params.require(:quote).permit(:url, :start, :caption, :end)
-    #hash[:email] = current_user.email
+    hash = params.require(:quote).permit(:url, :start, :caption, :end, :urlId)
+    begin
+      hash[:urlId] = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(params[:quote].permit(:url)[:url])[1]
+    rescue NoMethodError
+      #do nothing
+    end
+
     hash
   end
 

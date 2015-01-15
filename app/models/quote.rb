@@ -1,4 +1,8 @@
+
+include QuotesHelper
+
 class Quote < ActiveRecord::Base
+
   self.primary_key = :id
 
   # It returns the articles whose titles contain one or more words that form the query
@@ -9,6 +13,12 @@ class Quote < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :url, presence: true
+  validates :start, presence: true
+  validates :end, presence: true
+
+  validates_with YTLinkValidator
+
   def setUsername(username)
     @username = username
   end
@@ -16,12 +26,11 @@ class Quote < ActiveRecord::Base
     @username
   end
 
-  def setUrlId(urlId)
-    @urlId = urlId
+  def setUrlId(url)
+    @urlId = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(url)[1]
   end
-  def getUrlId()
-    @urlId
+  def getUrlId
+    return @urlId
   end
-
 
 end

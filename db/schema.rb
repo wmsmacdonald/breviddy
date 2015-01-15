@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230195602) do
+ActiveRecord::Schema.define(version: 20150107235818) do
 
   create_table "quotes", id: false, force: true do |t|
     t.integer  "id",         limit: 8, null: false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20141230195602) do
     t.string   "caption"
     t.string   "end"
     t.integer  "user_id"
+    t.string   "title"
+    t.string   "urlId"
   end
 
   add_index "quotes", ["id"], name: "id", unique: true, using: :btree

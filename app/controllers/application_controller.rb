@@ -24,15 +24,10 @@ class ApplicationController < ActionController::Base
 
       quoteStructure.each do |quote|
         quote.setUsername(User.find(quote.user_id).username)
-
-        urlid = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(quote.url)[1]
-        quote.setUrlId(urlid)
       end
 
     else
       quoteStructure.setUsername(User.find(quoteStructure.user_id).username)
-      urlid = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(quoteStructure.url)[1]
-      quoteStructure.setUrlId(urlid)
     end
 
   end
