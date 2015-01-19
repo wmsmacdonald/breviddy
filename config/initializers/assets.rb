@@ -12,6 +12,3 @@ Rails.application.config.assets.version = '1.0'
 end
 
 Rails.application.config.assets.precompile += %w( jquery.isonscreen.js )
-=beginRails.application.config.assets.precompile += %w( home.js )
-Rails.application.config.assets.precompile += %w( quotes.js )
-=end
