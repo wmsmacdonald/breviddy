@@ -1,37 +1,41 @@
 <script type="text/javascript">
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
-    scriptArray = document.getElementsByTagName('script')
+    scriptArray = document.getElementsByTagName('script');
     var firstScriptTag = scriptArray[scriptArray.length - 1];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     window.players = [];
 
+    var isPlaying = false;
 
-    function onPlayerStateChange(event, id, player, start) {
-    // Seeks to start and pauses if not on screen
+    function onPlayerStateChange(event, id, player, start) { // Seeks to start and pauses if not on screen
 
+        if (event.data == 1 & !player.onFirstSeekDone) { // Checks if event is valid and onFirstSeek hasn't been marked done
 
-        if (event.data == 1 &&  !player.onFirstSeekDone) {
-        // Checks if event is valid and onFirstSeek hasn't been marked done
+            function onFirstSeek() { // Pause player and mark done
 
-            onFirstSeek();
+                player.onFirstSeekDone = true; // Mark done
 
-
-            function onFirstSeek() {
-            // Pause player and mark done
-
-                // Mark done
-                player.onFirstSeekDone = true;
-
-                if (!$('#quote-box_' + id).isOnScreen(1, 0.8)) {
-                // Checks if player is not on screen
-
+                if (!$('#quote-box_' + id).isOnScreen(1, 0.8)) { // Checks if player is not on screen
                     player.pauseVideo();
                 }
 
             }
+            onFirstSeek();
+
         }
+
+    }
+
+    function getCookie(key) {
+        var cookieArray = document.cookie.split(';');
+        for (var i = 0; i < cookieArray.length; i++) {
+            if ($.trim(cookieArray[i].split('=')[0]) == key) {
+                return cookieArray[i].split('=')[1];
+            }
+        }
+        return "";
     }
 
     function onPlayerReady(id, player, start, end) {
@@ -39,17 +43,27 @@
 
         player.seekTo(start);
 
-        if (player.isMuted()) {
-        // checks if player is muted and then either toggles the mute button off or on
+        function muteButtonMuted() {
             $('.mute-quote-button').each(function() {
-                $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close"></i>');
+                $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close mute-quote-icon"></i>');
             });
         }
-        else {
+        function muteButtonUnMuted() {
             $('.mute-quote-button').each(function() {
                 $(this).html('<i class="fa fa-volume-up fa-2x"></i>');
             });
         }
+
+        if (getCookie("muted") === 'true') {
+        // checks if player is muted and then either toggles the volume button off or on
+            muteButtonMuted()
+            player.mute();
+        }
+        else {
+            muteButtonUnMuted()
+            player.unMute();
+        }
+        //$('#mute-quote-button_'+id).css('opacity','0.6');
         $('#video--mute-box_'+id).hover(function () { // when mouse is over video and mute button
             $('#mute-quote-button_'+id).animate({ // show the mute button
                 opacity: '0.6'
@@ -58,27 +72,26 @@
             $('#mute-quote-button_'+id).animate({ // otherwise hide the mute button
                 opacity: '0'
             }, 100);
+
         });
-        $('#mute-quote-button_'+id).click(function() { // Mute/unmute of click
+        $('#mute-quote-button_'+id).click(function() { // Mute/unmute on click
            if (player.isMuted()) {
-               $('.mute-quote-button').each(function() { // Change mute button to on for all players
-                   $(this).html('<i class="fa fa-volume-up fa-2x"></i>')
-               });
+               muteButtonUnMuted();
                for (var key in window.players) { // Unmute all players
                    if (window.players.hasOwnProperty(key)) {
                        window.players[key].unMute();
                    }
                }
+               document.cookie = "muted=false";
            }
            else {
-               $('.mute-quote-button').each(function() {  // Change mute button to off for all players
-                   $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close"></i>');
-               });
+               muteButtonMuted();
                for (var key in window.players) { // Mute all players
                    if (window.players.hasOwnProperty(key)) {
                        window.players[key].mute();
                    }
                }
+               document.cookie = "muted=true";
            }
         });
 
@@ -118,11 +131,13 @@
 
         function onVisibilityChange() {
         // Play video if it is in the view; otherwise pause the video (as long as it already completed the initial seek)
-            if ($('#quote-box_' + id).isOnScreen(1, 0.8)) {
+            if ($('#quote-box_' + id).isOnScreen(1, 0.8) & !window.isPlaying) {
                 player.playVideo();
+                window.isPlaying = true;
             }
             else if (player.onFirstSeekDone) {
                 player.pauseVideo();
+                window.isPlaying = false;
             }
         }
     }

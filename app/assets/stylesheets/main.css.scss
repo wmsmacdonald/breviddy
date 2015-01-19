@@ -170,7 +170,8 @@ h3#motto {
 }
 .mute-quote-button {
   position: absolute;
-  margin-left: -227px;
+  float:right;
+  font-size: 16px;
   margin-top: -1px;
   background: none;
   border: none;
@@ -180,11 +181,17 @@ h3#motto {
   outline: none;
   cursor: pointer;
 }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .mute-quote-button {
+    margin-left: -227px;
+  }
+}
 .mute-quote-button:hover {
   opacity: 1;
   color: #fff;
 }
-.video--mute-button {
+.video--mute-box {
+  text-align: left;
 
 }
 .caption-box {

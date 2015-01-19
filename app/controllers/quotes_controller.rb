@@ -28,11 +28,16 @@ class QuotesController < ApplicationController
       set_quote_dependents(@quotes)
     end
 
+    if cookies[:muted].blank?
+      cookies[:muted] = true
+    end
   end
 
   def search
     @quotes = Quote.search params[:search]
   end
+
+
 
   private
   def quote_params
@@ -42,7 +47,6 @@ class QuotesController < ApplicationController
     rescue NoMethodError
       #do nothing
     end
-
     hash
   end
 
