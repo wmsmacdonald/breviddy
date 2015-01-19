@@ -166,6 +166,26 @@ h3#motto {
   border-radius: 0.2em;
   display: inline-block;
   margin: 0 0 2em 0;
+  position: relative;
+}
+.mute-quote-button {
+  position: absolute;
+  margin-left: -227px;
+  margin-top: -1px;
+  background: none;
+  border: none;
+  color: #fff;
+  opacity: 0;
+  text-shadow: #46484b 1px 1px;
+  outline: none;
+  cursor: pointer;
+}
+.mute-quote-button:hover {
+  opacity: 1;
+  color: #fff;
+}
+.video--mute-button {
+
 }
 .caption-box {
   width: 450px;
@@ -196,10 +216,6 @@ h3#motto {
   border-left: 2px solid #ccc5c5;
 
 }
-/*.quote-button span:hover {
-  text-decoration: underline;
-
-}*/
 
 #full-video-icon {
   font-stretch: expanded;

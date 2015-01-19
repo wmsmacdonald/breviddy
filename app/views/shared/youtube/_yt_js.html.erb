@@ -5,32 +5,97 @@
     var firstScriptTag = scriptArray[scriptArray.length - 1];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+    window.players = [];
+
+
     function onPlayerStateChange(event, id, player, start) {
-        if (event.data == 1 &&  !window['hasPaused_'+id]) {
-            player.pauseVideo();
-            window['hasPaused_'+id] = true;
-        }
-        else if (event.data == 0) {
-            player.seekTo(start);
+    // Seeks to start and pauses if not on screen
+
+
+        if (event.data == 1 &&  !player.onFirstSeekDone) {
+        // Checks if event is valid and onFirstSeek hasn't been marked done
+
+            onFirstSeek();
+
+
+            function onFirstSeek() {
+            // Pause player and mark done
+
+                // Mark done
+                player.onFirstSeekDone = true;
+
+                if (!$('#quote-box_' + id).isOnScreen(1, 0.8)) {
+                // Checks if player is not on screen
+
+                    player.pauseVideo();
+                }
+
+            }
         }
     }
+
     function onPlayerReady(id, player, start, end) {
+    // Seek player to start and get controls functioning
+
         player.seekTo(start);
-        player.mute();
-        $('#ytplayer_'+id).hover(function () {
-            player.playVideo();
+
+        if (player.isMuted()) {
+        // checks if player is muted and then either toggles the mute button off or on
+            $('.mute-quote-button').each(function() {
+                $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close"></i>');
+            });
+        }
+        else {
+            $('.mute-quote-button').each(function() {
+                $(this).html('<i class="fa fa-volume-up fa-2x"></i>');
+            });
+        }
+        $('#video--mute-box_'+id).hover(function () { // when mouse is over video and mute button
+            $('#mute-quote-button_'+id).animate({ // show the mute button
+                opacity: '0.6'
+            }, 100);
         }, function () {
-            player.pauseVideo();
+            $('#mute-quote-button_'+id).animate({ // otherwise hide the mute button
+                opacity: '0'
+            }, 100);
         });
-        function updateTime() {
-            newVideotime = player.getCurrentTime();
-            if (newVideotime != window['videotime_'+id]) {
-                onProgress(newVideotime, player, start, end);
+        $('#mute-quote-button_'+id).click(function() { // Mute/unmute of click
+           if (player.isMuted()) {
+               $('.mute-quote-button').each(function() { // Change mute button to on for all players
+                   $(this).html('<i class="fa fa-volume-up fa-2x"></i>')
+               });
+               for (var key in window.players) { // Unmute all players
+                   if (window.players.hasOwnProperty(key)) {
+                       window.players[key].unMute();
+                   }
+               }
+           }
+           else {
+               $('.mute-quote-button').each(function() {  // Change mute button to off for all players
+                   $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close"></i>');
+               });
+               for (var key in window.players) { // Mute all players
+                   if (window.players.hasOwnProperty(key)) {
+                       window.players[key].mute();
+                   }
+               }
+           }
+        });
+
+        player.oldVideoTime = start;
+
+        function updateTime() { // If video time has actually changed, run onProgress()
+            var newVideoTime = player.getCurrentTime();
+            if (newVideoTime != player.oldVideoTime) {
+                onProgress(newVideoTime, player, start, end);
+                player.oldVideoTime = newVideoTime;
             }
         }
         setInterval(updateTime, 100);
+        playOnView(id,player);
+
     }
-    function onProgress(currentTime, player, start, end) {
+    function onProgress(currentTime, player, start, end) { // If the video time is greater than the end time, seek video to the start time
         if (currentTime > end) {
             player.seekTo(start);
             player.playVideo();
@@ -38,12 +103,29 @@
     }
 
     $('.quote-button').hover(function() {
+    // Underline animation for buttons under player
         $(this).children("span").css("text-decoration","underline");
     },function() {
         $(this).children("span").css("text-decoration","none");
     });
 
 
+    function playOnView(id, player) {
+    // Play on screen view handlers
+
+        $(window).on('DOMContentLoaded load resize scroll', onVisibilityChange);
+        // On screen movement run onVisibilityChange
+
+        function onVisibilityChange() {
+        // Play video if it is in the view; otherwise pause the video (as long as it already completed the initial seek)
+            if ($('#quote-box_' + id).isOnScreen(1, 0.8)) {
+                player.playVideo();
+            }
+            else if (player.onFirstSeekDone) {
+                player.pauseVideo();
+            }
+        }
+    }
     /*$(document).ready(onYouTubePlayerAPIReady);
     $(document).on('page:load', onYouTubePlayerAPIReady);*/
 </script>
