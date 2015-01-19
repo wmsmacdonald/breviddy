@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :quotes
 
-  match 'users/:username' => 'users#show', via: :get
+  match 'users/:username' => 'quotes#user', via: :get
 
 
 

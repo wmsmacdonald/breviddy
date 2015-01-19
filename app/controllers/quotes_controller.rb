@@ -18,6 +18,7 @@ class QuotesController < ApplicationController
   def show
     @quote = Quote.find(params[:id])
     set_quote_dependents(@quote)
+    mute_cookie
   end
 
   def index
@@ -27,14 +28,14 @@ class QuotesController < ApplicationController
       @quotes = Quote.all
       set_quote_dependents(@quotes)
     end
-
-    if cookies[:muted].blank?
-      cookies[:muted] = true
-    end
+    mute_cookie
   end
 
-  def search
-    @quotes = Quote.search params[:search]
+  def user
+    user = User.find_by_username(params[:username]) or not_found('User "'<<params[:username]<<'" not found')
+
+    @quotes = Quote.where({:user_id => user.id})
+    set_quote_dependents(@quotes)
   end
 
 

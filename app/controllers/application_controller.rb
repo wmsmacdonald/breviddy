@@ -31,4 +31,11 @@ class ApplicationController < ActionController::Base
     end
 
   end
+
+  def mute_cookie
+    if cookies[:muted].blank?
+      cookies[:muted] = true
+    end
+  end
+
 end
