@@ -7,8 +7,9 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css.sass, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-%w( quotes home ).each do |controller|
+%w( quotes home users ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css", "#{controller}.js"]
 end
 
 Rails.application.config.assets.precompile += %w( jquery.isonscreen.js )
+Rails.application.config.assets.precompile += %w( users.css.scss )

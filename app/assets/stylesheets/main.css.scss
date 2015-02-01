@@ -10,7 +10,7 @@ body {
   width: 100%;
   text-align: center;
   background-color: $primary-color;
-  padding: 10px 0;
+  padding: 0.7em 0;
 }
 #banner-inner {
   display: inline-block;
@@ -29,12 +29,11 @@ body {
   margin-right: 15vw;
   text-align: center;
 
-
   img {
     height: 2em;
     min-width: 6em;
     min-height: 1em;
-    width: 12em;
+    width: 10em;
     background-color: #fff;
   }
 }
@@ -125,6 +124,10 @@ h3#motto {
 .banner-button-selected {
   background: linear-gradient(#f5f1ef, #d5d1cf) !important;
   border-left-color: #d5d1cf;
+}
+.banner-button-selected:active {
+  border-left: 2px solid #d5d1cf;
+  background: linear-gradient(#d5d1cf, #f5f1ef) !important;
 }
 .mybtn:focus {
   outline: none !important;

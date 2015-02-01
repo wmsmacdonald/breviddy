@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title>Quotacle</title>
+  <%= stylesheet_link_tag 'application', 'users.css',  'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="/font-awesome-4.2.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Cabin:600' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="/img/icon.ico" />
+</head>
+<body data-no-turbolink>
+<div id="banner">
+  <div id="banner-inner">
+    <a href="/quotes/new"><button id="submit-quote-button" class="banner-button mybtn"><span id="add-icon" class="glyphicon glyphicon-plus"></span>  Submit Quote</button></a>
+    <a href="/"><div id="logo-box"><img id="logo" src="/img/smallLogoBetaTransparent.png" /></div></a>
+    <div id="account-wrapper">
+      <% if user_signed_in? %>
+          <div id="dropdown-1" class="dropdown">
+            <button class="btn btn-default dropdown-toggle banner-button mybtn" type="button" id="profile-button" data-toggle="dropdown" aria-expanded="true">
+              <i class="fa fa-user"></i>  <%= current_user.username %>  <span id="caret" class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="profile-button">
+              <li><a href="/users/<%= current_user.username %>">Submitted quotes</a></li>
+              <li><a href="/users/edit">Account settings</a></li>
+              <li><a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">Logout</a></li>
+            </ul>
+          </div>
+      <% else %>
+          <a href="<%= new_user_registration_path %>"><button id="sign-up-button" class="banner-button mybtn">Sign up</button></a><!--
+        --><a href="<%= new_user_session_path %>"><button id="login-button" class="banner-button mybtn">Login</button></a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% if notice %>
+    <p class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %></p>
+<% end %>
+<% if alert %>
+    <p class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= alert %></p>
+<% end %>
+<script type="text/javascript">
+    $('#close-alert-button').click(function() {
+        $('.alert').hide();
+    });
+</script>
+<div id="content">
+    <div id="inner-content">
+        <%= yield %>
+    </div>
+</div>
+<script type="text/javascript">
+    function preload() {
+        if (document.images) {
+            img1 = new Image();
+            img1.src = "/img/smallLogoBetaTransparent.png";
+        }
+    }
+    preload();
+
+    $('#logo-box img').hover(function() {
+                $('#logo').attr('src','/img/smallLogoBetaDarkRed.png');
+            },
+            function() {
+                $('#logo').attr('src','/img/smallLogoBetaTransparent.png');
+            }
+    );
+    $('.banner-button').hover(function() {
+        $(this).addClass('banner-button-selected');
+    }, function() {
+        $(this).removeClass('banner-button-selected');
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-50244607-1', 'quotacle.com');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

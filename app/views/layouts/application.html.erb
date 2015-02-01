@@ -13,12 +13,12 @@
 <div id="banner">
   <div id="banner-inner">
     <a href="/quotes/new"><button id="submit-quote-button" class="banner-button mybtn"><span id="add-icon" class="glyphicon glyphicon-plus"></span>  Submit Quote</button></a>
-    <a href="/"><div id="logo-box"><img id="logo" src="/img/smallLogoBetaTransparent.png" /></div></a>
+    <a href="/"><div id="logo-box"><img id="logo" src="/img/logoWhite.png" /></div></a>
     <div id="account-wrapper">
     <% if user_signed_in? %>
           <div id="dropdown-1" class="dropdown">
             <button class="btn btn-default dropdown-toggle banner-button mybtn" type="button" id="profile-button" data-toggle="dropdown" aria-expanded="true">
-              <i class="fa fa-user"></i>  <%= current_user.username[/[^@]+/] %>  <span id="caret" class="caret"></span>
+              <i class="fa fa-user"></i>  <%= current_user.username %>  <span id="caret" class="caret"></span>
             </button>
               <ul class="dropdown-menu" aria-labelledby="profile-button">
                 <li><a href="/users/<%= current_user.username %>">Submitted quotes</a></li>

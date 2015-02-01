@@ -36,6 +36,10 @@ gem 'kaminari'
 
 gem 'rest-client'
 
+gem 'mailcatcher'
+
+gem 'mail'
+
 #gem 'searchkick'
 
 #gem 'elasticsearch-model'
