@@ -4,14 +4,9 @@ $dark-grey: #515459;
 $very-light: #fbf4f4;
 div#content {
   width: 600px;
-  height: 100%;
+  height: auto;
   margin: 0 auto;
   background-color: $very-light;
-  z-index: -1;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: -300px;
   $border: 5px solid #8c8c8c;
   border-left: $border;
   border-right: $border;
@@ -20,7 +15,7 @@ div#content {
 div#inner-content {
   margin-left: 20px;
   padding-bottom: 20px;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 h2 {
   margin-top: 0px;

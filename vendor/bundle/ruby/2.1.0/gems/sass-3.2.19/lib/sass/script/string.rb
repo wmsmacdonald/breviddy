@@ -9,7 +9,7 @@ module Sass::Script
     attr_reader :value
 
     # Whether this is a CSS string or a CSS identifier.
-    # The difference is that strings are written with double-quotes,
+    # The difference is that strings are written with double-bits,
     # while identifiers aren't.
     #
     # @return [Symbol] `:string` or `:identifier`

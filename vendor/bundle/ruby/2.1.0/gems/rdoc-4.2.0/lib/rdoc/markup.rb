@@ -420,8 +420,8 @@
 #   em-dash::  -- or ---
 #   ellipsis:: ...
 #
-#   single quotes:: 'text' or `text'
-#   double quotes:: "text" or ``text''
+#   single bits:: 'text' or `text'
+#   double bits:: "text" or ``text''
 #
 #   copyright:: (c)
 #   registered trademark:: (r)
@@ -431,8 +431,8 @@
 # em-dash::  -- or ---
 # ellipsis:: ...
 #
-# single quotes:: 'text' or `text'
-# double quotes:: "text" or ``text''
+# single bits:: 'text' or `text'
+# double bits:: "text" or ``text''
 #
 # copyright:: (c)
 # registered trademark:: (r)

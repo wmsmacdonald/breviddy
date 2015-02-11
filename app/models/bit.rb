@@ -1,7 +1,6 @@
+include BitsHelper
 
-include QuotesHelper
-
-class Quote < ActiveRecord::Base
+class Bit < ActiveRecord::Base
 
   self.primary_key = :id
 

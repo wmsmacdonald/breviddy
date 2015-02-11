@@ -9,13 +9,13 @@ module Mail
     end
 
     # If the string supplied has ATOM unsafe characters in it, will return the string quoted
-    # in double quotes, otherwise returns the string unmodified
+    # in double bits, otherwise returns the string unmodified
     def quote_atom( str )
       atom_safe?( str ) ? str : dquote(str)
     end
 
     # If the string supplied has PHRASE unsafe characters in it, will return the string quoted
-    # in double quotes, otherwise returns the string unmodified
+    # in double bits, otherwise returns the string unmodified
     def quote_phrase( str )
       if RUBY_VERSION >= '1.9'
         original_encoding = str.encoding
@@ -38,12 +38,12 @@ module Mail
     end
 
     # If the string supplied has TOKEN unsafe characters in it, will return the string quoted
-    # in double quotes, otherwise returns the string unmodified
+    # in double bits, otherwise returns the string unmodified
     def quote_token( str )
       token_safe?( str ) ? str : dquote(str)
     end
 
-    # Wraps supplied string in double quotes and applies \-escaping as necessary,
+    # Wraps supplied string in double bits and applies \-escaping as necessary,
     # unless it is already wrapped.
     #
     # Example:
@@ -57,7 +57,7 @@ module Mail
       '"' + unquote(str).gsub(/[\\"]/n) {|s| '\\' + s } + '"'
     end
 
-    # Unwraps supplied string from inside double quotes and
+    # Unwraps supplied string from inside double bits and
     # removes any \-escaping.
     #
     # Example:

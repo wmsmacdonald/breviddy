@@ -194,7 +194,7 @@ module RDoc::Text
   end
 
   ##
-  # Converts ampersand, dashes, ellipsis, quotes, copyright and registered
+  # Converts ampersand, dashes, ellipsis, bits, copyright and registered
   # trademark symbols in +text+ to properly encoded characters.
 
   def to_html text
@@ -264,7 +264,7 @@ module RDoc::Text
           html << encoded[:close_squote]
           insquotes = false
         elsif after_word
-          # Mary's dog, my parents' house: do not start paired quotes
+          # Mary's dog, my parents' house: do not start paired bits
           html << encoded[:close_squote]
         else
           html << encoded[:open_squote]

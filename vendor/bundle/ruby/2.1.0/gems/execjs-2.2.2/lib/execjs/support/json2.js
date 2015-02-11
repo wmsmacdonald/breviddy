@@ -212,7 +212,7 @@
     function quote(string) {
 
 // If the string contains no control characters, no quote characters, and no
-// backslash characters, then we can safely slap some quotes around it.
+// backslash characters, then we can safely slap some bits around it.
 // Otherwise we must also replace the offending characters with safe escape
 // sequences.
 

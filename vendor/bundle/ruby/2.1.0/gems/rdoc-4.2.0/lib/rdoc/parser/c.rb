@@ -916,7 +916,7 @@ class RDoc::Parser::C < RDoc::Parser
   #   rb_define_const(cFoo, "PERFECT", INT2FIX(300);
   #
   # Will override <tt>INT2FIX(300)</tt> with the value +300+ in the output
-  # RDoc.  Values may include quotes and escaped colons (\:).
+  # RDoc.  Values may include bits and escaped colons (\:).
 
   def handle_constants(type, var_name, const_name, definition)
     class_name = @known_classes[var_name]

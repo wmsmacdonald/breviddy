@@ -17,7 +17,7 @@
 
                 player.onFirstSeekDone = true; // Mark done
 
-                if (!$('#quote-box_' + id).isOnScreen(1, 0.8)) { // Checks if player is not on screen
+                if (!$('#bit-box_' + id).isOnScreen(1, 0.8)) { // Checks if player is not on screen
                     player.pauseVideo();
                 }
 
@@ -44,12 +44,12 @@
         player.seekTo(start);
 
         function muteButtonMuted() {
-            $('.mute-quote-button').each(function() {
-                $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close mute-quote-icon"></i>');
+            $('.mute-bit-button').each(function() {
+                $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close mute-bit-icon"></i>');
             });
         }
         function muteButtonUnMuted() {
-            $('.mute-quote-button').each(function() {
+            $('.mute-bit-button').each(function() {
                 $(this).html('<i class="fa fa-volume-up fa-2x"></i>');
             });
         }
@@ -63,18 +63,18 @@
             muteButtonUnMuted()
             player.unMute();
         }
-        //$('#mute-quote-button_'+id).css('opacity','0.6');
+        //$('#mute-bit-button_'+id).css('opacity','0.6');
         $('#video--mute-box_'+id).hover(function () { // when mouse is over video and mute button
-            $('#mute-quote-button_'+id).animate({ // show the mute button
+            $('#mute-bit-button_'+id).animate({ // show the mute button
                 opacity: '0.6'
             }, 100);
         }, function () {
-            $('#mute-quote-button_'+id).animate({ // otherwise hide the mute button
+            $('#mute-bit-button_'+id).animate({ // otherwise hide the mute button
                 opacity: '0'
             }, 100);
 
         });
-        $('#mute-quote-button_'+id).click(function() { // Mute/unmute on click
+        $('#mute-bit-button_'+id).click(function() { // Mute/unmute on click
            if (player.isMuted()) {
                muteButtonUnMuted();
                for (var key in window.players) { // Unmute all players
@@ -115,7 +115,7 @@
         }
     }
 
-    $('.quote-button').hover(function() {
+    $('.bit-button').hover(function() {
     // Underline animation for buttons under player
         $(this).children("span").css("text-decoration","underline");
     },function() {
@@ -131,7 +131,7 @@
 
         function onVisibilityChange() {
         // Play video if it is in the view; otherwise pause the video (as long as it already completed the initial seek)
-            if ($('#quote-box_' + id).isOnScreen(1, 0.8) & !window.isPlaying) {
+            if ($('#bit-box_' + id).isOnScreen(1, 0.8) & !window.isPlaying) {
                 player.playVideo();
                 window.isPlaying = true;
             }
@@ -141,6 +141,5 @@
             }
         }
     }
-    /*$(document).ready(onYouTubePlayerAPIReady);
-    $(document).on('page:load', onYouTubePlayerAPIReady);*/
+
 </script>

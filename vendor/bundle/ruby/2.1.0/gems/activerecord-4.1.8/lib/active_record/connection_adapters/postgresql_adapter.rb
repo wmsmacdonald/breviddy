@@ -704,7 +704,7 @@ module ActiveRecord
 
         # Returns an array of <tt>[schema_name, table_name]</tt> extracted from +name+.
         # +schema_name+ is nil if not specified in +name+.
-        # +schema_name+ and +table_name+ exclude surrounding quotes (regardless of whether provided in +name+)
+        # +schema_name+ and +table_name+ exclude surrounding bits (regardless of whether provided in +name+)
         # +name+ supports the range of schema/table references understood by PostgreSQL, for example:
         #
         # * <tt>table_name</tt>

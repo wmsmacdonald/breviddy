@@ -164,13 +164,13 @@ describe "Uglifier" do
     expect(minified).not_to include("</script>")
   end
 
-  it "quotes keys" do
+  it "bits keys" do
     code = "var a = {foo: 1}"
     minified = Uglifier.compile(code, :output => { :quote_keys => true })
     expect(minified).to include('"foo"')
   end
 
-  it "quotes unsafe keys by default" do
+  it "bits unsafe keys by default" do
     code = 'var code = {"class": "", "\u200c":"A"}'
     expect(Uglifier.compile(code)).to include('"class"')
     expect(Uglifier.compile(code)).to include('"\u200c"')

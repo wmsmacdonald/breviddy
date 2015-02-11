@@ -208,7 +208,7 @@ module Rack
       ESCAPE_HTML_PATTERN = /#{Regexp.union(*ESCAPE_HTML.keys)}/n
     end
 
-    # Escape ampersands, brackets and quotes to their HTML/XML entities.
+    # Escape ampersands, brackets and bits to their HTML/XML entities.
     def escape_html(string)
       string.to_s.gsub(ESCAPE_HTML_PATTERN){|c| ESCAPE_HTML[c] }
     end

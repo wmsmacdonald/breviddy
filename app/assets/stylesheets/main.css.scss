@@ -15,7 +15,7 @@ body {
 #banner-inner {
   display: inline-block;
 }
-#submit-quote-button {
+#submit-bit-button {
   display: inline-block;
   vertical-align: top;
   span {
@@ -27,25 +27,28 @@ body {
   display: inline-block;
   margin-left: 15vw;
   margin-right: 15vw;
+  margin-top: 0.2em;
   text-align: center;
 
   img {
-    height: 2em;
+    height: 3em;
     min-width: 6em;
     min-height: 1em;
-    width: 10em;
-    background-color: #fff;
+
   }
 }
-
-#submit-quote-button {
+$banner-button-height: 2.4em;
+$banner-button-margin: 0.4em 0;
+$banner-button-padding-left: 0.6em;
+$banner-button-padding-right: 0.6em;
+#submit-bit-button {
 
   display: inline-block;
 
-  height: 2em;
+  height: $banner-button-height;
   padding: 0;
-  padding-left: 0.8em;
-  padding-right: 0.8em;
+  padding-left: $banner-button-padding-left;
+  padding-right: $banner-button-padding-right;
 
   border-radius: $banner-button-border-radius;
   border-bottom: 0px;
@@ -54,6 +57,7 @@ body {
   background: $very-light;
 
   border-top: 0.1em solid #aaaaaa;
+  margin: $banner-button-margin;
 }
 #account-wrapper {
   display: inline-block;
@@ -62,11 +66,13 @@ body {
   #profile-button {
     display: inline-block;
     background-color: #fbf4f4;
-    height: 2em;
-    padding: 0 0.8em;
+    height: $banner-button-height;
     border-top: 0.1em solid #aaaaaa;
     border-radius: $banner-button-border-radius;
     box-sizing: border-box;
+    margin: $banner-button-margin;
+    padding-left: $banner-button-padding-left;
+    padding-right: $banner-button-padding-right;
     i {
       color: $secondary-color;
     }
@@ -81,8 +87,10 @@ body {
   }
   #sign-up-button {
     display: inline-block;
-    height: 2em;
+    height: $banner-button-height;
     padding: 0 0.8em;
+    padding-left: $banner-button-padding-left;
+    padding-right: $banner-button-padding-right;
     border-radius: $banner-button-border-radius 0 0 $banner-button-border-radius;
     box-sizing: border-box;
     border-bottom: 0px;
@@ -90,13 +98,14 @@ body {
     color: $secondary-color;
     background-color: #fbf4f4;
     border-top: 0.1em solid #aaaaaa;
-
+    margin: $banner-button-margin;
   }
   #login-button {
     background-color: #fbf4f4;
     display: inline-block;
-    height: 2em;
-    padding: 0 0.8em;
+    height: $banner-button-height;
+    padding-left: $banner-button-padding-left;
+    padding-right: $banner-button-padding-right;
     border-top: 0.1em solid #aaaaaa;
     border-radius: 4px;
     box-sizing: border-box;
@@ -105,6 +114,7 @@ body {
     border-bottom: 0px;
     border-right: 0px;
     color: $secondary-color;
+    margin: $banner-button-margin;
   }
 
 }
@@ -153,17 +163,17 @@ h3#motto {
   font-size: 1.5em;
   overflow: visible;
   margin-left: -1.55em;
-  margin-top: 0.03em;
+  margin-top: 0.36em;
   color: $secondary-color;
   border: none;
   background: none;
 }
-#quotes-super-box {
+#bits-super-box {
   text-align: center;
 }
-#quotes-box {
+#bits-box {
 }
-.quote-box {
+.bit-box {
   background-color: #fbf4f4;
   padding: 14px;
   border-radius: 0.2em;
@@ -171,7 +181,7 @@ h3#motto {
   margin: 0 0 2em 0;
   position: relative;
 }
-.mute-quote-button {
+.mute-bit-button {
   position: absolute;
   float:right;
   font-size: 16px;
@@ -185,11 +195,11 @@ h3#motto {
   cursor: pointer;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  .mute-quote-button {
+  .mute-bit-button {
     margin-left: -227px;
   }
 }
-.mute-quote-button:hover {
+.mute-bit-button:hover {
   opacity: 1;
   color: #fff;
 }
@@ -211,13 +221,13 @@ h3#motto {
   width: 450px;
   height: 300px;
 }
-.quote-button-box {
+.bit-button-box {
   margin-top: 0.5em;
   border-top: 2px solid #ccc5c5;
   border-bottom: 2px solid #ccc5c5;
   border-radius: 0.1em;
 }
-.quote-button {
+.bit-button {
   height: 2.5em;
   color: #333333;
   border-radius: 0;

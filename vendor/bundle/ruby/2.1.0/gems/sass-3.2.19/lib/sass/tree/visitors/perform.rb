@@ -396,7 +396,7 @@ class Sass::Tree::Visitors::Perform < Sass::Tree::Visitors::Base
     text.map do |r|
       next r if r.is_a?(String)
       val = r.perform(@environment)
-      # Interpolated strings should never render with quotes
+      # Interpolated strings should never render with bits
       next val.value if val.is_a?(Sass::Script::String)
       val.to_s
     end.join

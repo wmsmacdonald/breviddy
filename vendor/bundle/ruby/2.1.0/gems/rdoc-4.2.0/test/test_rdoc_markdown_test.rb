@@ -468,7 +468,7 @@ foo
   end
 
   def test_literal_quotes_in_titles
-    input = File.read "#{MARKDOWN_TEST_PATH}/Literal quotes in titles.text"
+    input = File.read "#{MARKDOWN_TEST_PATH}/Literal bits in titles.text"
 
     doc = @parser.parse input
 
@@ -736,7 +736,7 @@ foo
         head(3, "Code"),
 
         para("In a regular paragraph, you can create code span by wrapping text in\n" +
-             "backtick quotes. Any ampersands (<code>&</code>) and angle brackets (<code><</code> or\n" +
+             "backtick bits. Any ampersands (<code>&</code>) and angle brackets (<code><</code> or\n" +
              "<code>></code>) will automatically be translated into HTML entities. This makes\n" +
              "it easy to use Markdown to write about HTML example code:"),
 
@@ -1339,7 +1339,7 @@ foo
         para("To create an inline link, use a set of regular parentheses immediately\n" +
              "after the link text's closing square bracket. Inside the parentheses,\n" +
              "put the URL where you want the link to point, along with an _optional_\n" +
-             "title for the link, surrounded in quotes. For example:"),
+             "title for the link, surrounded in bits. For example:"),
 
         verb("This is [an example](http://example.com/ \"Title\") inline link.\n",
              "\n",
@@ -1386,7 +1386,7 @@ foo
             para("followed by the URL for the link;")),
           item(nil,
             para("optionally followed by a title attribute for the link, enclosed\n" +
-                 "in double or single quotes."))),
+                 "in double or single bits."))),
 
         para("The link URL may, optionally, be surrounded by angle brackets:"),
 
@@ -1523,7 +1523,7 @@ foo
 
         raw("<h3 id=\"code\">Code</h3>"),
 
-        para("To indicate a span of code, wrap it with backtick quotes (<code>`</code>).\n" +
+        para("To indicate a span of code, wrap it with backtick bits (<code>`</code>).\n" +
              "Unlike a pre-formatted code block, a code span indicates code within a\n" +
              "normal paragraph. For example:"),
 
@@ -1600,7 +1600,7 @@ foo
           item(nil,
             para("followed by a set of parentheses, containing the URL or path to\n" +
                  "the image, and an optional <code>title</code> attribute enclosed in double\n" +
-                 "or single quotes."))),
+                 "or single bits."))),
 
         para("Reference-style image syntax looks like this:"),
 

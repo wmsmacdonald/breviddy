@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120180037) do
+ActiveRecord::Schema.define(version: 20150206053226) do
 
-  create_table "quotes", force: true do |t|
+  create_table "bits", force: true do |t|
     t.string   "url"
     t.string   "start"
     t.string   "caption"

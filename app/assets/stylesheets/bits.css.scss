@@ -1,4 +1,4 @@
-// Place all the styles related to the quotes controller here.
+// Place all the styles related to the bits controller here.
 // They will automatically be included in application.css.sass.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $secondary-color: #34344a;
@@ -126,7 +126,7 @@ $very-light: #fbf4f4;
   position: relative;
   top: -0.33em;
 }
-i.mute-quote-icon {
+i.mute-bit-icon {
   top: -0.37em;
 }
 #caption-input {
@@ -141,7 +141,7 @@ i.mute-quote-icon {
   border: none;
   outline: none;
 }
-#save-quote-button {
+#save-bit-button {
   font-family: 'Cabin';
   padding: 10px 80px;
   margin-top: -10px;
@@ -151,6 +151,9 @@ i.mute-quote-icon {
   border-radius: 5px;
   font-size: 1.3em;
 }
-#save-quote-button:hover {
+#save-bit-button:hover {
   background: linear-gradient($secondary-color, #606086);
+}
+.underline {
+  text-decoration: underline;
 }

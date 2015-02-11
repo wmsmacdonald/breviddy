@@ -210,24 +210,24 @@ describe Rack::Multipart do
     params["files"][:tempfile].read.should.equal "contents"
   end
 
-  should "parse filename with escaped quotes" do
+  should "parse filename with escaped bits" do
     env = Rack::MockRequest.env_for("/", multipart_fixture(:filename_with_escaped_quotes))
     params = Rack::Multipart.parse_multipart(env)
     params["files"][:type].should.equal "application/octet-stream"
-    params["files"][:filename].should.equal "escape \"quotes"
+    params["files"][:filename].should.equal "escape \"bits"
     params["files"][:head].should.equal "Content-Disposition: form-data; " +
       "name=\"files\"; " +
-      "filename=\"escape \\\"quotes\"\r\n" +
+      "filename=\"escape \\\"bits\"\r\n" +
       "Content-Type: application/octet-stream\r\n"
     params["files"][:name].should.equal "files"
     params["files"][:tempfile].read.should.equal "contents"
   end
 
-  should "parse filename with percent escaped quotes" do
+  should "parse filename with percent escaped bits" do
     env = Rack::MockRequest.env_for("/", multipart_fixture(:filename_with_percent_escaped_quotes))
     params = Rack::Multipart.parse_multipart(env)
     params["files"][:type].should.equal "application/octet-stream"
-    params["files"][:filename].should.equal "escape \"quotes"
+    params["files"][:filename].should.equal "escape \"bits"
     params["files"][:head].should.equal "Content-Disposition: form-data; " +
       "name=\"files\"; " +
       "filename=\"escape %22quotes\"\r\n" +
@@ -236,20 +236,20 @@ describe Rack::Multipart do
     params["files"][:tempfile].read.should.equal "contents"
   end
 
-  should "parse filename with unescaped quotes" do
+  should "parse filename with unescaped bits" do
     env = Rack::MockRequest.env_for("/", multipart_fixture(:filename_with_unescaped_quotes))
     params = Rack::Multipart.parse_multipart(env)
     params["files"][:type].should.equal "application/octet-stream"
-    params["files"][:filename].should.equal "escape \"quotes"
+    params["files"][:filename].should.equal "escape \"bits"
     params["files"][:head].should.equal "Content-Disposition: form-data; " +
       "name=\"files\"; " +
-      "filename=\"escape \"quotes\"\r\n" +
+      "filename=\"escape \"bits\"\r\n" +
       "Content-Type: application/octet-stream\r\n"
     params["files"][:name].should.equal "files"
     params["files"][:tempfile].read.should.equal "contents"
   end
 
-  should "parse filename with escaped quotes and modification param" do
+  should "parse filename with escaped bits and modification param" do
     env = Rack::MockRequest.env_for("/", multipart_fixture(:filename_with_escaped_quotes_and_modification_param))
     params = Rack::Multipart.parse_multipart(env)
     params["files"][:type].should.equal "image/jpeg"

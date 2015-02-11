@@ -257,27 +257,27 @@ h3#motto {
   width: 20%;
   border-right: 2px solid #ccc5c5;
 }
-/* line 4, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 4, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 #upper-spacer {
   height: 100px;
 }
 
-/* line 7, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 7, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 #url-info-box {
   text-align: center;
 }
 
-/* line 10, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 10, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 #url-box {
   text-align: center;
 }
 
-/* line 13, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 13, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 #url-input {
   width: 400px;
 }
 
-/* line 16, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 16, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 #seek-slider-box {
   margin-bottom: -55px;
   width: 570px;
@@ -285,14 +285,14 @@ h3#motto {
   margin-right: auto;
 }
 
-/* line 22, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 22, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 #cut-slider-box {
   width: 570px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 27, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 27, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 .irs-slider.from {
   background: url("/img/bracket.png") no-repeat center !important;
   height: 35px;
@@ -303,12 +303,12 @@ h3#motto {
   margin-top: -3px;
 }
 
-/* line 37, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 37, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 .irs-to, .irs-from {
   background-color: #34344a !important;
 }
 
-/* line 40, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 40, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 .irs-slider.to {
   background: url("/img/bracket.png") no-repeat center !important;
   -webkit-transform: rotate(180deg);
@@ -323,20 +323,20 @@ h3#motto {
   margin-left: -3px;
 }
 
-/* line 55, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 55, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 .irs-bar {
   border-color: #A63131 !important;
   background: #A63131 !important;
 }
 
-/* line 59, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 59, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 .irs-slider.single {
   width: 20px;
   height: 20px;
   margin-top: 3px;
 }
 
-/* line 64, /home/bill/rails/quotacle/app/assets/stylesheets/quotes.css.scss */
+/* line 64, /home/bill/rails/quotacle/app/assets/stylesheets/bits.css.scss */
 #super-box {
   text-align: center;
 }

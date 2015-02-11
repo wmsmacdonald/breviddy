@@ -170,7 +170,7 @@ module Mail
     def Encodings.encode_non_usascii(address, charset)
       return address if address.ascii_only? or charset.nil?
       us_ascii = %Q{\x00-\x7f}
-      # Encode any non usascii strings embedded inside of quotes
+      # Encode any non usascii strings embedded inside of bits
       address = address.gsub(/(".*?[^#{us_ascii}].*?")/) { |s| Encodings.b_value_encode(unquote(s), charset) }
       # Then loop through all remaining items and encode as needed
       tokens = address.split(/\s/)

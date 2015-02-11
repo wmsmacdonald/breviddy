@@ -1,4 +1,4 @@
-module QuotesHelper
+module BitsHelper
 
   class YTLinkValidator < ActiveModel::Validator
     def validate(record)

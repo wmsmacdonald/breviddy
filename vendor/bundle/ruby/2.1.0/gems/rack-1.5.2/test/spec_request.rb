@@ -519,7 +519,7 @@ describe Rack::Request do
     req.cookies.should.equal 'foo' => 'bar'
   end
 
-  should 'parse cookies with quotes' do
+  should 'parse cookies with bits' do
     req = Rack::Request.new Rack::MockRequest.env_for('', {
       'HTTP_COOKIE' => '$Version="1"; Customer="WILE_E_COYOTE"; $Path="/acme"; Part_Number="Rocket_Launcher_0001"; $Path="/acme"'
     })

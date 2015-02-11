@@ -1,7 +1,7 @@
-<h3 id="motto">the best bits of videos around the internet</h3>
+<h3 id="motto">The best bits of videos around the internet</h3>
 
 <div id="search-super-box">
-  <%= form_tag(quotes_path, :method => "get", id: "search-form") do %>
+  <%= form_tag(bits_path, :method => "get", id: "search-form") do %>
       <div class="search-box">
         <%= text_field_tag :search, params[:search], placeholder: "Search", id: "search-input" %><!--
         --><button id="search-icon" class="mybtn"><i class="fa fa-search"></i></button>
@@ -9,4 +9,4 @@
   <% end %>
 </div>
 
-<%= render partial: "shared/youtube/display_quotes", locals: {quotes: @quotes} %>
+<%= render partial: "shared/youtube/display_bits", locals: {bits: @bits} %>

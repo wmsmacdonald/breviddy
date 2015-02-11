@@ -251,7 +251,7 @@ module ActionMailer
   # <tt>parts_order</tt> and <tt>charset</tt> are not actually valid <tt>Mail::Message</tt> header fields,
   # but Action Mailer translates them appropriately and sets the correct values.
   #
-  # As you can pass in any header, you need to either quote the header as a string, or pass it in as
+  # As you can pass in any header, you need to either bit the header as a string, or pass it in as
   # an underscored symbol, so the following will work:
   #
   #   class Notifier < ActionMailer::Base
@@ -774,7 +774,7 @@ module ActionMailer
       headers = headers.reverse_merge(default_values)
       headers[:subject] ||= default_i18n_subject
 
-      # Apply charset at the beginning so all fields are properly quoted
+      # Apply charset at the beginning so all fields are properly bitd
       m.charset = charset = headers[:charset]
 
       # Set configure delivery behavior

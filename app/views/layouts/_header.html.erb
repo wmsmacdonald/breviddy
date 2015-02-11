@@ -1,0 +1,29 @@
+<div id="banner">
+  <div id="banner-inner">
+    <a href="/bits/new"><button id="submit-bit-button" class="banner-button mybtn"><span id="add-icon" class="glyphicon glyphicon-plus"></span> Submit video</button></a>
+    <a href="/"><div id="logo-box"><img id="logo" src="/img/logo.png" /></div></a>
+    <div id="account-wrapper">
+      <% if user_signed_in? %>
+          <div id="dropdown-1" class="dropdown">
+            <button class="btn btn-default dropdown-toggle banner-button mybtn" type="button" id="profile-button" data-toggle="dropdown" aria-expanded="true">
+              <i class="fa fa-user"></i>  <%= current_user.username %>  <span id="caret" class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="profile-button">
+              <li><a href="/users/<%= current_user.username %>">Submitted videos</a></li>
+              <li><a href="/users/edit">Account settings</a></li>
+              <li><a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">Logout</a></li>
+            </ul>
+          </div>
+      <% else %>
+          <a href="<%= new_user_registration_path %>"><button id="sign-up-button" class="banner-button mybtn">Sign up</button></a><!--
+    --><a href="<%= new_user_session_path %>"><button id="login-button" class="banner-button mybtn">Login</button></a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% if notice %>
+    <p class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %></p>
+<% end %>
+<% if alert %>
+    <p class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= alert %></p>
+<% end %>

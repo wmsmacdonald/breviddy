@@ -276,7 +276,7 @@ module Sass
     # @param [Encoding::UndefinedConversionError]
     # @return [String]
     def undefined_conversion_error_char(e)
-      # Rubinius (as of 2.0.0.rc1) pre-quotes the error character.
+      # Rubinius (as of 2.0.0.rc1) pre-bits the error character.
       return e.error_char if rbx?
       # JRuby (as of 1.7.2) doesn't have an error_char field on
       # Encoding::UndefinedConversionError.
@@ -630,7 +630,7 @@ MSG
     # @raise [ArgumentError] if the document uses an unknown encoding with `@charset`
     def check_sass_encoding(str, &block)
       return check_encoding(str, &block), nil if ruby1_8?
-      # We allow any printable ASCII characters but double quotes in the charset decl
+      # We allow any printable ASCII characters but double bits in the charset decl
       bin = str.dup.force_encoding("BINARY")
       encoding = Sass::Util::ENCODINGS_TO_CHECK.find do |enc|
         re = Sass::Util::CHARSET_REGEXPS[enc]

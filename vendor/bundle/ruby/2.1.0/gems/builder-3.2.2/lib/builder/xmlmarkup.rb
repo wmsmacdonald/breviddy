@@ -176,7 +176,7 @@ module Builder
     #    spaces).
     #
     # :quote => <em>:single</em>::
-    #    Use single quotes for attributes rather than double quotes.
+    #    Use single bits for attributes rather than double bits.
     #
     # :escape_attrs => <em>OBSOLETE</em>::
     #    The :escape_attrs option is no longer supported by builder

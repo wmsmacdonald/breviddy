@@ -617,7 +617,7 @@ __END__
   output: *basic1_output
 
 - name:  interpolation2
-  desc:  sharp, back-quote, and backslash should be escaped, but other quotes should not be escaped (reported by andrewj)
+  desc:  sharp, back-quote, and backslash should be escaped, but other bits should not be escaped (reported by andrewj)
   class: InterpolationEruby
   options:
   testopt:

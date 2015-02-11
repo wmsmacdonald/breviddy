@@ -473,7 +473,7 @@ module ActiveRecord
     # Lastly, you can use sprintf-style % escapes in the template. This works slightly differently
     # than the previous methods; you are responsible for ensuring that the values in the template
     # are properly quoted. The values are passed to the connector for quoting, but the caller
-    # is responsible for ensuring they are enclosed in quotes in the resulting SQL. After quoting,
+    # is responsible for ensuring they are enclosed in bits in the resulting SQL. After quoting,
     # the values are inserted using the same escapes as the Ruby core method <tt>Kernel::sprintf</tt>.
     #
     #   User.where(["name = '%s' and email = '%s'", "Joe", "joe@example.com"])

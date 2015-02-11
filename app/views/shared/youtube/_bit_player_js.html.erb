@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    window.playerFunction_<%= bit.id %> = function() {
+
+        window['hasPaused_<%= bit.id %>'] = false;
+        window['videotime_<%= bit.id %>'] = 0;
+        window.players['player_<%= bit.id %>'] = new YT.Player('ytplayer_<%= bit.id %>', {
+            height: '300',
+            width: '450',
+            videoId: '<%= bit.urlId %>',
+            playerVars: {'iv_load_policy': 3, 'controls': 0, 'rel': 0, 'showinfo': 0, 'modestbranding': 1},
+            events: {
+                'onReady': function () {
+                    onPlayerReady(<%= bit.id %>, window.players.player_<%= bit.id %>, <%= bit.start %>, <%= bit.end %>);
+                },
+                'onStateChange': function (e) {
+                    onPlayerStateChange(e, <%= bit.id %>, window.players.player_<%= bit.id %>, <%= bit.start %>);
+                }
+            }
+        });
+
+        $('#play-full-button_<%= bit.id %>').click(function () {
+            $('#ytplayer_<%= bit.id %>').replaceWith('<div id="ytplayer_<%= bit.id %>" class="ytplayer"></div>');
+            player_<%= bit.id %> = new YT.Player('ytplayer_<%= bit.id %>', {
+                height: '300',
+                width: '450',
+                videoId: '<%= bit.urlId %>',
+                playerVars: {'iv_load_policy': 3, autoplay: 1},
+                events: {
+                    'onReady': function () {
+                        window.players.player_<%= bit.id %>.unMute();
+                        window.players.player_<%= bit.id %>.playVideo();
+                    }
+                }
+            });
+        });
+        window.players.player_<%= bit.id %>.onFirstSeekDone = false;
+    }
+</script>

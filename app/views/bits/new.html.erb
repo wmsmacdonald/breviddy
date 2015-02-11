@@ -7,7 +7,6 @@
     <h3 id="url-instructions">Paste a YouTube video URL</h3>
     <div id="url-box"><input id="url-input" type="text" onClick="this.setSelectionRange(0, this.value.length)" /></div>
     <div id="ytplayer-box"><div id="ytplayer"></div></div>
-    <input id="caption-input" placeholder="Click here to add a caption" />
     <h3 id="trim-instructions"></h3>
     <div id="controls-box">
 
@@ -50,7 +49,7 @@
             setTimeout(function () {
                 if (window.isStart) {
                     $('#url-instructions').hide();
-                    $('#trim-instructions').html('Trim the video with the brackets to create a quote');
+                    $('#trim-instructions').html('Trim the video with the brackets to create a bit');
                     $('#upper-spacer').animate({
                         height: "10px"
                     }, 300, function () {
@@ -86,7 +85,8 @@
                         url = "https://gdata.youtube.com/feeds/api/videos/" + urlId + "?v=2&alt=json";
                         $.getJSON(url, function (data) {
                             $('#video-title-box').html(data.entry.title.$t);
-                            window.duration = data.entry.media$group.yt$duration.seconds
+                            window.duration = data.entry.media$group.yt$duration.seconds;
+                            window.player.title = data.entry.title.$t;
                         });
                         window.videoError = false;
                         window.player = new YT.Player('ytplayer', {
@@ -182,8 +182,8 @@
                 hide_min_max: true,
                 min_interval: 2,
                 onFinish: function(data) {
-                    $('#quote_start').val(Math.round(data.from));
-                    $('#quote_end').val(Math.round(data.to));
+                    $('#bit_start').val(Math.round(data.from));
+                    $('#bit_end').val(Math.round(data.to));
                     window.player.seekTo(Math.round(data.from));
                     window.player.playVideo();
                 }
@@ -193,10 +193,10 @@
             function moveSlider() {
                 videotime = Math.round(window.player.getCurrentTime());
                 slidertime = Math.round(window.slidertime);
-                endtime = Math.round($('#quote_end').val());
+                endtime = Math.round($('#bit_end').val());
 
                 if (videotime == endtime) {
-                    window.player.seekTo($('#quote_start').val());
+                    window.player.seekTo($('#bit_start').val());
                 }
                 if (videotime != slidertime & !window.seeking) {
                     window.seek_slider.update({
@@ -205,17 +205,18 @@
                 }
             }
             $('#form-box').html(
-                '<%= form_for :quote, url: quotes_path do |f| %>' +
+                '<%= form_for :bit, url: bits_path do |f| %>' +
                     '<%= f.hidden_field :url %>'+
                     '<%= f.hidden_field :start %>'+
                     '<%= f.hidden_field :end %>' +
-                    '<%= f.hidden_field :caption %><br>' +
-                    '<%= f.submit value: "Submit Quote", id: "save-quote-button" %>' +
+                    '<%= f.hidden_field :title %><br>' +
+                    '<%= f.submit value: "Submit bit", id: "save-bit-button" %>' +
                 '<% end %>'
             );
-            $('#quote_url').val($('#url-input').val());
-            $('#quote_start').val(0);
-            $('#quote_end').val(window.duration);
+            $('#bit_url').val($('#url-input').val());
+            $('#bit_start').val(0);
+            $('#bit_end').val(window.duration);
+            $('#bit_title').val(window.player.title);
 
             $('#toggle-play-button').click(function() {
                 if (player.getPlayerState() == 1) {
@@ -238,9 +239,6 @@
                 }
 
             });
-            $('#caption-input').change(function() {
-                $('#quote_caption').val($(this).val());
-            })
 
         }
 

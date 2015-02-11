@@ -1,0 +1,18 @@
+<div id="bits-super-box">
+    <div id="bits-box"><!--
+        <% bits.each do |bit| %>
+            <%= render partial: "shared/youtube/bit_box", locals: {bit: bit} %>
+        <% end %>
+    --></div>
+</div>
+
+<script type="text/javascript" >
+    function onYouTubePlayerAPIReady() {
+        <% bits.each do |bit| %>
+            window.playerFunction_<%= bit.id %>();
+        <% end %>
+    }
+</script>
+<% bits.each do |bit| %>
+    <%= render partial: "shared/youtube/bit_player_js", locals: {bit: bit} %>
+<% end %>

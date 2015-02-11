@@ -16,7 +16,7 @@ module ActionView
       JS_ESCAPE_MAP["\342\200\250".force_encoding(Encoding::UTF_8).encode!] = '&#x2028;'
       JS_ESCAPE_MAP["\342\200\251".force_encoding(Encoding::UTF_8).encode!] = '&#x2029;'
 
-      # Escapes carriage returns and single and double quotes for JavaScript segments.
+      # Escapes carriage returns and single and double bits for JavaScript segments.
       #
       # Also available through the alias j(). This is particularly helpful in JavaScript
       # responses, like:

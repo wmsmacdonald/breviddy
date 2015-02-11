@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get 'quotes/index'
-  root 'quotes#index'
+  get 'bits/index'
+  root 'bits#index'
 
-  resources :quotes
+  resources :bits
 
-  match 'users/:username' => 'quotes#user', via: :get
+  match 'users/:username' => 'bits#user', via: :get
 
 
 

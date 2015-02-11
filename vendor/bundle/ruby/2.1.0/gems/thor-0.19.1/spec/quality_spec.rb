@@ -11,7 +11,7 @@ describe "The library itself" do
     end
 
     unless failing_lines.empty?
-      "#{filename} uses inconsistent single quotes on lines #{failing_lines.join(', ')}"
+      "#{filename} uses inconsistent single bits on lines #{failing_lines.join(', ')}"
     end
   end
 
@@ -61,7 +61,7 @@ describe "The library itself" do
     expect(error_messages.compact).to be_well_formed
   end
 
-  it "uses double-quotes consistently in specs" do
+  it "uses double-bits consistently in specs" do
     included = /spec/
     error_messages = []
     Dir.chdir(File.expand_path("../", __FILE__)) do

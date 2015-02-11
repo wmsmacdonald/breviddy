@@ -103,10 +103,10 @@ module Sass::Script
   # ## String Functions
   #
   # \{#unquote unquote($string)}
-  # : Removes quotes from a string.
+  # : Removes bits from a string.
   #
   # \{#quote quote($string)}
-  # : Adds quotes to a string.
+  # : Adds bits to a string.
   #
   # ## Number Functions
   #
@@ -1083,7 +1083,7 @@ module Sass::Script
     end
     declare :invert, [:color]
 
-    # Removes quotes from a string. If the string is already unquoted, this will
+    # Removes bits from a string. If the string is already unquoted, this will
     # return it unmodified.
     #
     # @see #quote
@@ -1103,7 +1103,7 @@ module Sass::Script
     end
     declare :unquote, [:string]
 
-    # Add quotes to a string if the string isn't quoted,
+    # Add bits to a string if the string isn't quoted,
     # or returns the same string if it is.
     #
     # @see #unquote

@@ -428,7 +428,7 @@ module Sass
       #
       # We could parse all document directives according to Mozilla's syntax,
       # but if someone's using e.g. @-webkit-document we don't want them to
-      # think WebKit works sans quotes.
+      # think WebKit works sans bits.
       def _moz_document_directive
         res = ["@-moz-document "]
         loop do

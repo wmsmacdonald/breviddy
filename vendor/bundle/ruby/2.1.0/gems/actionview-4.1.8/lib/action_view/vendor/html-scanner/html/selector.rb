@@ -563,7 +563,7 @@ module HTML
           if value == "?"
             value = values.shift
           else
-            # Handle single and double quotes.
+            # Handle single and double bits.
             value.strip!
             if (value[0] == ?" || value[0] == ?') && value[0] == value[-1]
               value = value[1..-2]

@@ -8,26 +8,26 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new(msg)
   end
 
-  def set_username(quoteStructure)
-    if quoteStructure.respond_to?(:each)
-      quoteStructure.each do |quote|
-        quote.setUsername(User.find(quote.user_id).username)
+  def set_username(bitStructure)
+    if bitStructure.respond_to?(:each)
+      bitStructure.each do |bit|
+        bit.setUsername(User.find(bit.user_id).username)
       end
     else
-      quoteStructure.setUsername(User.find(quoteStructure.user_id).username)
+      bitStructure.setUsername(User.find(bitStructure.user_id).username)
     end
 
   end
-  def set_quote_dependents(quoteStructure)
+  def set_bit_dependents(bitStructure)
 
-    if quoteStructure.respond_to?(:each)
+    if bitStructure.respond_to?(:each)
 
-      quoteStructure.each do |quote|
-        quote.setUsername(User.find(quote.user_id).username)
+      bitStructure.each do |bit|
+        bit.setUsername(User.find(bit.user_id).username)
       end
 
     else
-      quoteStructure.setUsername(User.find(quoteStructure.user_id).username)
+      bitStructure.setUsername(User.find(bitStructure.user_id).username)
     end
 
   end

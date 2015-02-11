@@ -82,7 +82,7 @@ module ActionDispatch
 
       # Unescapes a JS string.
       def unescape_js(js_string)
-        # js encodes double quotes and line breaks.
+        # js encodes double bits and line breaks.
         unescaped= js_string.gsub('\"', '"')
         unescaped.gsub!('\\\'', "'")
         unescaped.gsub!(/\\\//, '/')
