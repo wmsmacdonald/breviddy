@@ -6,11 +6,13 @@ $banner-button-border-radius: 0.3em;
 body {
   background: url('/img/brushed.png');
 }
-#banner {
+#banner { /* height 4.6em */
   width: 100%;
   text-align: center;
   background-color: $primary-color;
   padding: 0.7em 0;
+  position: relative;
+  z-index: 2;
 }
 #banner-inner {
   display: inline-block;
@@ -18,12 +20,9 @@ body {
 #submit-bit-button {
   display: inline-block;
   vertical-align: top;
-  span {
-
-  }
 
 }
-#logo-box {
+#logo-box { /* height 3.2em */
   display: inline-block;
   margin-left: 15vw;
   margin-right: 15vw;
@@ -34,13 +33,13 @@ body {
     height: 3em;
     min-width: 6em;
     min-height: 1em;
-
   }
 }
 $banner-button-height: 2.4em;
 $banner-button-margin: 0.4em 0;
-$banner-button-padding-left: 0.6em;
-$banner-button-padding-right: 0.6em;
+$banner-button-padding-left: 0.8em;
+$banner-button-padding-right: 0.8em;
+
 #submit-bit-button {
 
   display: inline-block;

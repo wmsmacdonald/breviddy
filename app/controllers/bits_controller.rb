@@ -34,7 +34,7 @@ class BitsController < ApplicationController
   def user
     user = User.find_by_username(params[:username]) or not_found('User "'<<params[:username]<<'" not found')
 
-    @bits = bit.where({:user_id => user.id})
+    @bits = Bit.where({:user_id => user.id}).order(created_at: :desc)
     set_bit_dependents(@bits)
   end
 

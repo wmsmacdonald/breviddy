@@ -2,20 +2,35 @@ $primary-color: #a63131;
 $secondary-color: #34344a;
 $dark-grey: #515459;
 $very-light: #fbf4f4;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+div#page {
+  height: 100%;
+}
 div#content {
   width: 600px;
-  height: auto;
-  margin: 0 auto;
   background-color: $very-light;
+  overflow: hidden;
+  z-index: 1;
+  height: 100%;
+  display: block;
   $border: 5px solid #8c8c8c;
   border-left: $border;
   border-right: $border;
-
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -4.6em;
+  padding-top: 4.6em;
+  margin-bottom: -0.3em;
 }
 div#inner-content {
   margin-left: 20px;
   padding-bottom: 20px;
-  margin-top: 80px;
+  margin-top: 0px;
 }
 h2 {
   margin-top: 0px;
