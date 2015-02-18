@@ -1,1 +1,7 @@
-<%= render partial: "shared/youtube/display_bits", locals: {bits: @bits} %>
+<div id="bits-super-box">
+  <div id="bits-box">
+    <%= render @bits %>
+  </div>
+  <a href="/"><button id="return-home-button">Return Home</button></a>
+</div>
+

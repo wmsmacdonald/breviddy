@@ -1,0 +1,10 @@
+$('#bits-box').append('<%= j render @bits %>');
+<% if @bits.next_page %>
+$('.pagination').replaceWith('<%= j will_paginate @bits %>');
+<% else %>
+$(window).off('scroll');
+$('.pagination').remove();
+<% end %>
+$(window).on('DOMContentLoaded load resize scroll', function() {
+    onVisibilityChange();
+});

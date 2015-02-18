@@ -2,6 +2,8 @@ include BitsHelper
 
 class Bit < ActiveRecord::Base
 
+  self.per_page = 4
+
   self.primary_key = :id
 
   # It returns the articles whose titles contain one or more words that form the query

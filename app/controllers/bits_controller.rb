@@ -25,8 +25,12 @@ class BitsController < ApplicationController
     if params[:search]
       @bits = Bit.search(params[:search])
     else
-      @bits = Bit.all.order(created_at: :desc)
+      @bits = Bit.paginate(page: params[:page]).order('created_at DESC')
       set_bit_dependents(@bits)
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
     mute_cookie
   end

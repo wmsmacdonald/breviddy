@@ -1,5 +1,5 @@
 class AddTitleToQuotes < ActiveRecord::Migration
   def change
-    add_column :bits, :title, :string
+    add_column :quotes, :title, :string
   end
 end

@@ -5,12 +5,10 @@
 <div id="super-box">
     <div id="upper-spacer"></div>
     <h3 id="url-instructions">Paste a YouTube video URL</h3>
-    <div id="url-box"><input id="url-input" type="text" onClick="this.setSelectionRange(0, this.value.length)" /></div>
+    <div id="url-box"><input id="url-input" type="text" onClick="this.setSelectionRange(0, this.value.length)" autofocus="true"/></div>
     <div id="ytplayer-box"><div id="ytplayer"></div></div>
     <h3 id="trim-instructions"></h3>
-    <div id="controls-box">
-
-    </div>
+    <div id="controls-box"></div>
     <div id="form-box"></div>
 </div>
 <script type="text/javascript">
@@ -31,10 +29,6 @@
         }
     }
 
-    function onUrlSubmit() {
-
-    }
-
     $(document).ready(function() {
         window.isStart = true;
         $('#url-input').on("paste", urlEnter);
@@ -49,7 +43,7 @@
             setTimeout(function () {
                 if (window.isStart) {
                     $('#url-instructions').hide();
-                    $('#trim-instructions').html('Trim the video with the brackets to create a bit');
+                    $('#trim-instructions').html('Trim the video with the brackets to create a video bit');
                     $('#upper-spacer').animate({
                         height: "10px"
                     }, 300, function () {
@@ -163,6 +157,8 @@
                     window.slidertime = data.from;
                 }
             });
+
+            window.slider_to_time = 0;
             window.seek_slider = $("#seek-slider").data("ionRangeSlider");
             $('#cut-slider').ionRangeSlider({
                 type: "double",
@@ -184,8 +180,11 @@
                 onFinish: function(data) {
                     $('#bit_start').val(Math.round(data.from));
                     $('#bit_end').val(Math.round(data.to));
-                    window.player.seekTo(Math.round(data.from));
-                    window.player.playVideo();
+                    if (data.from !== window.slider_to_time) {
+                        window.player.seekTo(Math.round(data.from));
+                        window.player.playVideo();
+                        window.slider_to_time = data.from;
+                    }
                 }
             });
             $('.triangle').css({"border": "none"});
@@ -195,7 +194,7 @@
                 slidertime = Math.round(window.slidertime);
                 endtime = Math.round($('#bit_end').val());
 
-                if (videotime == endtime) {
+                if (videotime >= endtime || window.player.getPlayerState() == 0) {
                     window.player.seekTo($('#bit_start').val());
                 }
                 if (videotime != slidertime & !window.seeking) {
@@ -210,7 +209,7 @@
                     '<%= f.hidden_field :start %>'+
                     '<%= f.hidden_field :end %>' +
                     '<%= f.hidden_field :title %><br>' +
-                    '<%= f.submit value: "Submit bit", id: "save-bit-button" %>' +
+                    '<%= f.submit value: "Submit video bit", id: "save-bit-button" %>' +
                 '<% end %>'
             );
             $('#bit_url').val($('#url-input').val());
@@ -250,5 +249,8 @@
         $('#url-instructions').show();
         $('#super-box').before('<p class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+msg+'</span></p>');
     }
+
+
+
 
 </script>

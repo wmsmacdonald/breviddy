@@ -32,13 +32,19 @@ gem 'bootstrap-sass'
 
 gem 'autoprefixer-rails'
 
-gem 'kaminari'
+#gem 'kaminari'
 
 gem 'rest-client'
 
 gem 'mailcatcher'
 
 gem 'mail'
+
+gem 'will_paginate', '~> 3.0.5'
+
+gem 'bootstrap-will_paginate', '~> 0.0.10'
+
+gem 'masonry-rails'
 
 #gem 'searchkick'
 

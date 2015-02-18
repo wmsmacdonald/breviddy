@@ -3,6 +3,6 @@ class RenameQuotesToVideoBits < ActiveRecord::Migration
     rename_table :quotes, :video_bits
   end
   def self.down
-    rename_table :video_bits
+    rename_table :video_bits, :quotes
   end
 end

@@ -13,7 +13,18 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
 window = exports ? this
 
-window.players = [];
+window.players = []; # array for the players (for API access)
+
+window.player_functions = []; # array for player load functions
+
+window.isYTAPILoaded = false
+# When the YT API is loaded, start the loading the players
+@onYouTubePlayerAPIReady = () ->
+  window.isYTAPILoaded = true
+  while window.player_functions.length # execute all the player functions
+    window.player_functions.shift().call()
+
+  return
 
 isPlaying = false;
 
@@ -30,7 +41,7 @@ isPlaying = false;
 
     onFirstSeek()
 
-getCookie = (key) ->
+getCookie = (key) -> # Get cookie value from key
   cookieArray = document.cookie.split(';');
 
   for cookie in cookieArray when $.trim(cookie.split('=')[0]) is key
@@ -38,7 +49,7 @@ getCookie = (key) ->
 
   return "";
 
-
+# When the YT player is fully loaded
 @onPlayerReady = (id, player, start, end) ->
 
   # Seek player to start and get controls functioning
@@ -63,13 +74,16 @@ getCookie = (key) ->
     player.unMute()
 
   $('#video--mute-box_'+id).hover ->  # when mouse is over video and mute button
+
+    #$('#mute-bit-button_<%= bit.id %>').css('position', 'absolute')
+
     $('#mute-bit-button_'+id).animate( # show the mute button
       opacity: '0.6'
-    , 100)
+    , 50)
   , ->
     $('#mute-bit-button_'+id).animate( # otherwise hide the mute button
       opacity: '0'
-    , 100)
+    , 50)
 
   $('#mute-bit-button_'+id).click ->  # Mute/unmute on click
 
@@ -95,43 +109,41 @@ getCookie = (key) ->
 
   updateTime = () -> # If video time has actually changed, run onProgress()
     newVideoTime = player.getCurrentTime()
-    if newVideoTime isnt player.oldVideoTime
+    if newVideoTime isnt player.oldVideoTime or player.getPlayerState() is 0
       onProgress(newVideoTime, player, start, end)
       player.oldVideoTime = newVideoTime
 
   setInterval(updateTime, 100)
-  playOnView(id,player)
-
+  #playOnView(id,player)
 
 onProgress = (currentTime, player, start, end) -> # If the video time is greater than the end time, seek video to the start time
-  if currentTime > end
+  console.log(currentTime + ":" + end)
+  if currentTime >= end
     player.seekTo(start);
     player.playVideo();
+
+$(window).on 'DOMContentLoaded load resize scroll', ->
+  onVisibilityChange();
+
+window.isPlaying = false
+@onVisibilityChange = () ->
+  for own key, value of window.players
+    divName = '#video--mute-box_' + window.players[key].id
+    if $(divName).isOnScreen(1, 0.7) and !window.isPlaying
+      window.players[key].playVideo()
+      window.isPlaying = true
+    else if window.players[key].onFirstSeekDone
+      window.players[key].pauseVideo()
+      window.isPlaying = false
 
 
 $ ->
   $('.bit-button').hover( ->
-  # Underline animation for buttons under player
-    console.log("hover")
+    # Underline animation for buttons under player
     $(this).children("span").toggleClass("underline")
     return
-)
+  )
 
-playOnView = (id, player) -> # Play on screen view handlers
-
-  $(window).on 'DOMContentLoaded load resize scroll', ->
-    onVisibilityChange();
-  # On screen movement run onVisibilityChange
-
-  onVisibilityChange = () -> # Play video if it is in the view; otherwise pause the video (as long as it already completed the initial seek)
-
-    if $('#bit-box_' + id).isOnScreen(1, 0.8) and not window.isPlaying
-      player.playVideo()
-      window.isPlaying = true
-
-    else if (player.onFirstSeekDone)
-      player.pauseVideo()
-      window.isPlaying = false
 ###
  IS ON SCREEN FUNCTION
 ###

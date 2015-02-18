@@ -1,0 +1,65 @@
+<br>
+<div id="bit-box_<%= bit.id %>" class="bit-box bit"><!--
+        --><div id="video--mute-box_<%= bit.id %>"><!--
+            --><div id="mute-bit-button_<%= bit.id %>" class="mute-bit-button absolute"></div><!--
+            --><div id="ytplayer_<%= bit.id %>" class="ytplayer"></div><br><!--
+        --></div><!--
+        --><div class="bit-button-box"><!--
+            --><button class="bit-button play-full-button" id="play-full-button_<%= bit.id %>"><img src="/img/play-full-video.png"> <span>Play full video</span></button><!--
+            --><a href="<%= bit.url %>" target="_blank"><button class="bit-button source-button"><i class="fa fa-youtube-play"></i> <span>YouTube</span></button></a><!--
+            --><a href="/users/<%= bit.getUsername %>"><button class="bit-button user-button"><i class="fa fa-user"></i> <span><%= bit.getUsername %></span></button></a><!--
+            --><button class="bit-button share-button"><i class="fa fa-share-square-o"></i> <span>Share</span></button>
+    </div><!--
+--></div>
+
+<script type="text/javascript">
+
+    window.player_function_<%= bit.id %> = function() {
+
+        window['hasPaused_<%= bit.id %>'] = false;
+        window['videotime_<%= bit.id %>'] = 0;
+        window.players['player_<%= bit.id %>'] = new YT.Player('ytplayer_<%= bit.id %>', {
+            height: '300',
+            width: '450',
+            videoId: '<%= bit.urlId %>',
+            playerVars: {'iv_load_policy': 3, 'controls': 0, 'rel': 0, 'showinfo': 0, 'modestbranding': 1},
+            events: {
+                'onReady': function () {
+                    onPlayerReady(<%= bit.id %>, window.players.player_<%= bit.id %>, <%= bit.start %>, <%= bit.end %>);
+                },
+                'onStateChange': function (e) {
+                    onPlayerStateChange(e, <%= bit.id %>, window.players.player_<%= bit.id %>, <%= bit.start %>);
+                }
+            }
+        });
+
+        $('#play-full-button_<%= bit.id %>').click(function () {
+            $('#ytplayer_<%= bit.id %>').replaceWith('<div id="ytplayer_<%= bit.id %>" class="ytplayer"></div>');
+            player_<%= bit.id %> = new YT.Player('ytplayer_<%= bit.id %>', {
+                height: '300',
+                width: '450',
+                videoId: '<%= bit.urlId %>',
+                playerVars: {'iv_load_policy': 3, autoplay: 1},
+                events: {
+                    'onReady': function () {
+                        window.players.player_<%= bit.id %>.unMute();
+                        window.players.player_<%= bit.id %>.playVideo();
+                    }
+                }
+            });
+        });
+        window.players.player_<%= bit.id %>.onFirstSeekDone = false;
+        window.players['player_<%= bit.id %>'].id = <%= bit.id %>;
+    }
+
+
+
+    window.player_functions.push(window.player_function_<%= bit.id %>);
+
+    if (window.isYTAPILoaded) {
+        while (window.player_functions.length) {
+            window.player_functions.shift().call();
+        }
+    }
+
+</script>
