@@ -13,13 +13,14 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: quotacle
-  password: UjBx4QAMy9KWBRV8
+  username: breviddy-web
+  #password: UjBx4QAMy9KWBRV8
+  password: D43K6VTJxKxjH7p5
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: quotacle_development
+  database: breviddy_development
 
 
 # Warning: The database defined as "test" will be erased and
@@ -27,7 +28,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: quotacle_test
+  database: breviddy_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: quotacle_production
-  username: quotacle
-  password: <%= ENV['QUOTACLE_DATABASE_PASSWORD'] %>
+  database: breviddy_production
+  username: breviddy-web
+  #password: <%= ENV['QUOTACLE_DATABASE_PASSWORD'] %>
+  password: D43K6VTJxKxjH7p5
