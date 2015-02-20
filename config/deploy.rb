@@ -9,7 +9,7 @@ set :branch, "master"
 set :user, 'bill'
 set :use_sudo, false
 set :rails_env, "production"
-set :deploy_via, :copy
+set :deploy_via, :remote_cache
 set :ssh_options, { :forward_agent => true, :port => 22 }
 set :keep_releases, 5
 server "104.236.137.192", user: 'bill', roles: %w{web app}
@@ -57,6 +57,15 @@ namespace :deploy do
       # end
     end
   end
+
+  desc "Restart Passenger app"
+  task :restart do
+    run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
+  end
+
+  after "deploy", "deploy:symlink_config_files"
+  after "deploy", "deploy:restart"
+  after "deploy", "deploy:cleanup"
 
 end
 
