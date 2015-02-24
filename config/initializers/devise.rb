@@ -11,7 +11,9 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'confirmation@quotacle.com'
+  #config.mailer_sender = 'confirmation@mg.breviddy.com'
+
+  #config.mailer = "UserMailer"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -259,5 +261,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.secret_key = 'da6bb3fa8846d902556d9b99a52987ad13e720ffb317dedd6cd30dc9a7081cb48e87c8294199ab91b735e99abc3163145a72231238d88c23e1bdb9d62c2af68d'
+
 
 end

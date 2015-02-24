@@ -80,5 +80,19 @@ Rails.application.configure do
   #config.action_mailer.delivery_method = :mailgun
   #config.action_mailer.mailgun_settings = {domain: 'stmp.mailgun.org'}
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :authentication => :plain,
+      :address => "smtp.gmail.org",
+      :port => 587,
+      :domain => "breviddy.com",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      :user_name => "wmsmacdonald@gmail.com",
+      :password => "cl0netr00pers"
+  }
+
+  config.action_mailer.default_url_options = { :host => 'breviddy.com' }
+
 
 end

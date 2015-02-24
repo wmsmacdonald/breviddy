@@ -1,11 +1,12 @@
 # config valid only for current version of Capistrano
 lock '3.3.5'
 
+set :stage, :production
 set :application, 'quotacle'
 set :repo_url, 'git@gitlab.com:wmsmacdonald/quotacle.git'
 set :deploy_to, '/data/breviddy'
 set :scm, :git
-set :branch, "master"
+set :branch, 'master'
 set :user, 'bill'
 set :use_sudo, false
 set :rails_env, "production"
@@ -47,6 +48,15 @@ set :log_level, :debug
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+require 'rvm/capistrano'
+set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
+set :rvm_autolibs_flag, "read-only"       # more info: rvm help autolibs
+
+before 'deploy:setup', 'rvm:install_rvm'  # install/update RVM
+before 'deploy:setup', 'rvm:install_ruby' # install Ruby and create gemset, OR:
+# before 'deploy:setup', 'rvm:create_gemset' # only create gemset
+
+
 namespace :deploy do
 
   after :restart, :clear_cache do
@@ -62,10 +72,6 @@ namespace :deploy do
   task :restart do
     run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
   end
-
-  after "deploy", "deploy:symlink_config_files"
-  after "deploy", "deploy:restart"
-  after "deploy", "deploy:cleanup"
 
 end
 

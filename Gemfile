@@ -48,6 +48,8 @@ gem 'masonry-rails'
 
 gem 'capistrano'
 
+gem 'rvm-capistrano'
+
 #gem 'searchkick'
 
 #gem 'elasticsearch-model'
