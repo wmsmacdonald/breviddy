@@ -17,4 +17,3 @@
 
 # MySQL config
 /config/database.yml
-/config/secrets.yml
