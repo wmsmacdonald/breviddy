@@ -39,5 +39,12 @@ Rails.application.configure do
   #config.action_mailer.delivery_method = :mailgun
   #config.action_mailer.mailgun = {:address => "smtp.mailgun.com", :port => 587}
 
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+      api_key: 'key-8c2407d0cd0932a94d015dd780c46b44',
+      domain: 'mg.breviddy.com'
+  }
+  config.action_mailer.raise_delivery_errors = true
+
 
 end

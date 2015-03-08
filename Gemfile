@@ -50,6 +50,10 @@ gem 'capistrano'
 
 gem 'rvm-capistrano'
 
+gem 'mailgunner'
+
+gem 'mailgun-ruby', require: 'mailgun'
+
 #gem 'searchkick'
 
 #gem 'elasticsearch-model'

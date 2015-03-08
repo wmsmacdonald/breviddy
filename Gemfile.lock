@@ -84,6 +84,10 @@ GEM
       skinny (>= 0.1.2)
       sqlite3-ruby
       thin
+    mailgun-ruby (1.0.3)
+      json (~> 1.8)
+      rest-client (~> 1.6)
+    mailgunner (2.1.0)
     masonry-rails (0.2.4)
       railties
     mime-types (2.4.3)
@@ -190,6 +194,8 @@ DEPENDENCIES
   jquery-rails
   mail
   mailcatcher
+  mailgun-ruby
+  mailgunner
   masonry-rails
   mysql2
   rails (= 4.1.8)
