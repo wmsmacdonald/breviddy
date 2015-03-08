@@ -2,6 +2,8 @@ include BitsHelper
 
 class Bit < ActiveRecord::Base
 
+  @is_anonymous = false;
+
   self.per_page = 4
 
   self.primary_key = :id
@@ -32,6 +34,13 @@ class Bit < ActiveRecord::Base
   end
   def getUrlId
     return @urlId
+  end
+
+  def is_anonymous?
+    @is_anonymous
+  end
+  def set_anonymous(bool)
+    @is_anonymous = bool
   end
 
 end

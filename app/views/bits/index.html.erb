@@ -15,19 +15,22 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  /*
-    window.isYTAPILoaded = false;
-    function onYouTubePlayerAPIReady() {
-        window.isYTAPILoaded = true;
-        while (window.player_functions.length) {
-            window.player_functions.shift().call();
-        }
-    }
-    */
-</script>
-
 <div id="infinite-scrolling">
     <%= will_paginate %>
 </div>
+
+<span id="top-link-block" class="hidden">
+    <a href="#top" id="top-button"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+      <i class="fa fa-arrow-up"></i>
+    </a>
+</span>
+
+<script type="text/javascript">
+    if ( ($(window).height() + 100) < $(document).height() ) {
+        $('#top-link-block').removeClass('hidden').affix({
+            // how far to scroll down before link "slides" into view
+            offset: {top:800}
+        });
+    }
+</script>
 

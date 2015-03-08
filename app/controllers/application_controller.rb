@@ -20,14 +20,24 @@ class ApplicationController < ActionController::Base
   end
   def set_bit_dependents(bitStructure)
 
-    if bitStructure.respond_to?(:each)
+    if bitStructure.respond_to?(:each) # if bitStructure has multiple objects
 
       bitStructure.each do |bit|
-        bit.setUsername(User.find(bit.user_id).username)
+
+        if bit.user_id == 0 # if the user_id was set to 0, make the bit anonymous
+          bit.set_anonymous(true)
+        else
+          bit.setUsername(User.find(bit.user_id).username)
+        end
       end
 
-    else
-      bitStructure.setUsername(User.find(bitStructure.user_id).username)
+    else # if bitStructure is one bit
+
+      if bitStructure.user_id == '0'
+        bitStructure.set_anonymous(true)
+      else
+        bitStructure.setUsername(User.find(bitStructure.user_id).username)
+      end
     end
 
   end

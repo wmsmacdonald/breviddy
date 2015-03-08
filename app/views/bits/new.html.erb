@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.css" />
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.skinHTML5.css" />
 <script type="text/javascript" src="/slider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+<% if not user_signed_in? %>
+    <% flash.now[:notice] = ('This video bit will be submitted anonymously. '+ link_to('Sign up', new_user_registration_path) +
+            ' or '+link_to('login', new_user_session_path)+' to see all your submitted video bits.').html_safe %>
+<% end %>
 
 <div id="super-box">
     <div id="upper-spacer"></div>

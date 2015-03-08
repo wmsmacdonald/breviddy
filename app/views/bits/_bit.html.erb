@@ -7,7 +7,11 @@
         --><div class="bit-button-box"><!--
             --><button class="bit-button play-full-button" id="play-full-button_<%= bit.id %>"><img src="/img/play-full-video.png"> <span>Play full video</span></button><!--
             --><a href="<%= bit.url %>" target="_blank"><button class="bit-button source-button"><i class="fa fa-youtube-play"></i> <span>YouTube</span></button></a><!--
-            --><a href="/users/<%= bit.getUsername %>"><button class="bit-button user-button"><i class="fa fa-user"></i> <span><%= bit.getUsername %></span></button></a><!--
+            <% if bit.is_anonymous? %>
+                --><a href="#"><button class="bit-button user-button"><i class="fa fa-user"></i> <span>anonymous</span></button></a><!--
+            <% else %>
+                --><a href="/users/<%= bit.getUsername %>"><button class="bit-button user-button"><i class="fa fa-user"></i> <span><%= bit.getUsername %></span></button></a><!--
+            <% end %>
             --><button class="bit-button share-button"><i class="fa fa-share-square-o"></i> <span>Share</span></button>
     </div><!--
 --></div>

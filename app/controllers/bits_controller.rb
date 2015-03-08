@@ -1,10 +1,16 @@
 class BitsController < ApplicationController
   def new
   end
-  before_filter :authenticate_user!,
-                :only => [:new]
+
+  #before_filter :authenticate_user!,
+  #              :only => [:new]
   def create
-    @bit = current_user.bits.create(bit_params)
+
+    if user_signed_in?
+      @bit = current_user.bits.create(signed_in_bit_params)
+    else
+      @bit = Bit.create(signed_out_bit_params)
+    end
 
     if @bit.save
       redirect_to @bit
@@ -43,13 +49,24 @@ class BitsController < ApplicationController
   end
 
   private
-  def bit_params
+  def signed_in_bit_params
     hash = params.require(:bit).permit(:url, :start, :title, :end, :urlId)
     begin
       hash[:urlId] = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(params[:bit].permit(:url)[:url])[1]
     rescue NoMethodError
       #do nothing
     end
+    hash
+  end
+
+  def signed_out_bit_params
+    hash = params.require(:bit).permit(:url, :start, :title, :end, :urlId)
+    begin
+      hash[:urlId] = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(params[:bit].permit(:url)[:url])[1]
+    rescue NoMethodError
+      #do nothing
+    end
+    hash[:user_id] = '0'
     hash
   end
 
