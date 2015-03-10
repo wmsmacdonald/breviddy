@@ -142,6 +142,7 @@ $ ->
     $(this).children("span").toggleClass("underline")
     return
   )
+  return
 
 ###
  IS ON SCREEN FUNCTION
