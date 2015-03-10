@@ -52,6 +52,12 @@ class BitsController < ApplicationController
     set_bit_dependents(@bits)
   end
 
+  def destroy
+    Bit.destroy(params[:id])
+    redirect_to '/bits/index'
+    flash[:notice] = "Video bit was successfully deleted."
+  end
+
   private
   def signed_in_bit_params
     hash = params.require(:bit).permit(:url, :start, :title, :end, :urlId)

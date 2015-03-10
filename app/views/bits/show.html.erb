@@ -2,6 +2,10 @@
   <div id="bits-box">
     <%= render @bits %>
   </div>
-  <a href="/"><button id="return-home-button">Return Home</button></a>
+  <a href="/"><button id="return-home-button"><span class="glyphicon glyphicon-home"></span> Return Home</button></a>
+  <% if signed_in? and current_user.id == @bits[0].user_id %>
+      <br><br>
+      <%= link_to 'Delete bit', bit_path(@bits), :method => :delete %>
+  <% end %>
 </div>
 
