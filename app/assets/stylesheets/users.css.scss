@@ -11,7 +11,7 @@ div#page {
   height: 100%;
 }
 div#content {
-  width: 600px;
+  width: 700px;
   background-color: $very-light;
   overflow: hidden;
   z-index: 1;
@@ -28,9 +28,9 @@ div#content {
   margin-bottom: -0.3em;
 }
 div#inner-content {
-  margin-left: 20px;
+  margin-left: 40px;
   padding-bottom: 20px;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 h2 {
   margin-top: 0px;

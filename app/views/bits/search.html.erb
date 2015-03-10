@@ -11,13 +11,10 @@
 
 <div id="bits-super-box">
   <div id="bits-box" data-no-turbolink>
-        <%= render @bits %>
+    <%= render @bits %>
   </div>
 </div>
 
-<div id="infinite-scrolling">
-    <%= will_paginate %>
-</div>
 
 <span id="top-link-block" class="hidden">
     <a href="#top" id="top-button"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">

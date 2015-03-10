@@ -80,10 +80,6 @@ $banner-button-padding-right: 0.8em;
     position:absolute;
     background: $very-light;
   }
-
-  #logout-button {
-
-  }
   #sign-up-button {
     display: inline-block;
     height: $banner-button-height;
@@ -162,7 +158,7 @@ h3#motto {
   font-size: 1.5em;
   overflow: visible;
   margin-left: -1.55em;
-  margin-top: 0.36em;
+  /*margin-top: 0.36em;*/
   color: $secondary-color;
   border: none;
   background: none;

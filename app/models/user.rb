@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :bits, dependent: :destroy
+  validates_uniqueness_of :username
 
 end

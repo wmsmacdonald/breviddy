@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :bits
 
   match 'users/:username' => 'bits#user', via: :get
+  match 'search' => 'bits#search', via: :get
 
 
 
