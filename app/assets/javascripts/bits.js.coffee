@@ -135,7 +135,7 @@ window.isPlaying = false
       window.players[key].pauseVideo()
       window.isPlaying = false
 
-
+###
 $ ->
   $('.bit-button').hover( ->
     # Underline animation for buttons under player
@@ -143,7 +143,7 @@ $ ->
     return
   )
   return
-
+###
 ###
  IS ON SCREEN FUNCTION
 ###

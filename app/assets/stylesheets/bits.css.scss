@@ -222,6 +222,9 @@ i.mute-bit-icon {
   border: none;
   border-left: 2px solid #ccc5c5;
 }
+.bit-button:hover .bit-text {
+  text-decoration: underline;
+}
 
 #full-video-icon {
   font-stretch: expanded;

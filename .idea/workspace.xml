@@ -62,8 +62,8 @@
       <file leaf-file-name="bits.css.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bits.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.7454543" vertical-offset="2546" max-vertical-offset="5112">
-              <caret line="159" column="29" selection-start-line="159" selection-start-column="29" selection-end-line="159" selection-end-column="29" />
+            <state vertical-scroll-proportion="-10.654546" vertical-offset="3482" max-vertical-offset="5166">
+              <caret line="226" column="1" selection-start-line="226" selection-start-column="1" selection-end-line="226" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -102,24 +102,24 @@
       <file leaf-file-name="bits.js.coffee" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/bits.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.393736" vertical-offset="2150" max-vertical-offset="3600">
-              <caret line="139" column="28" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.5033557" vertical-offset="2106" max-vertical-offset="3600">
+              <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
               <folding>
-                <marker date="1426022924609" expanded="true" signature="4364:5401" placeholder="{...}" />
-                <marker date="1426022924609" expanded="true" signature="4503:4557" placeholder="{...}" />
-                <marker date="1426022924609" expanded="true" signature="4739:4758" placeholder="{...}" />
-                <marker date="1426022924609" expanded="true" signature="5020:5039" placeholder="{...}" />
-                <marker date="1426022924609" expanded="true" signature="5054:5317" placeholder="{...}" />
+                <marker date="1426023438429" expanded="true" signature="4370:5407" placeholder="{...}" />
+                <marker date="1426023438429" expanded="true" signature="4509:4563" placeholder="{...}" />
+                <marker date="1426023438429" expanded="true" signature="4745:4764" placeholder="{...}" />
+                <marker date="1426023438429" expanded="true" signature="5026:5045" placeholder="{...}" />
+                <marker date="1426023438429" expanded="true" signature="5060:5323" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/bits/search.html.erb">
+      <file leaf-file-name="_bit.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/bits/_bit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="702">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1332">
+              <caret line="14" column="136" selection-start-line="14" selection-start-column="136" selection-end-line="14" selection-end-column="136" />
               <folding />
             </state>
           </provider>
@@ -168,7 +168,6 @@
         <option value="$PROJECT_DIR$/app/views/bits/new.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/bits/_bit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/pagination.js.coffee" />
         <option value="$PROJECT_DIR$/Capfile" />
@@ -187,10 +186,11 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/bits/search.html.erb" />
         <option value="$PROJECT_DIR$/app/models/bit.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/bits.css.scss" />
         <option value="$PROJECT_DIR$/app/controllers/bits_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/bits/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/bits.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/bits/_bit.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/bits.css.scss" />
       </list>
     </option>
   </component>
@@ -1203,14 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bits/_bit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2733189" vertical-offset="0" max-vertical-offset="1332">
-          <caret line="14" column="100" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/bits/search.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="702">
@@ -1251,10 +1243,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bits/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="306">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/bits/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="756">
           <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bits/_bit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1332">
+          <caret line="14" column="136" selection-start-line="14" selection-start-column="136" selection-end-line="14" selection-end-column="136" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bits.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.654546" vertical-offset="3482" max-vertical-offset="5166">
+          <caret line="226" column="1" selection-start-line="226" selection-start-column="1" selection-end-line="226" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1267,14 +1283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bits.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.7454543" vertical-offset="2546" max-vertical-offset="5112">
-          <caret line="159" column="29" selection-start-line="159" selection-start-column="29" selection-end-line="159" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/bits_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1602">
@@ -1283,24 +1291,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bits/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="306">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/bits.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.393736" vertical-offset="2150" max-vertical-offset="3600">
-          <caret line="139" column="28" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.5033557" vertical-offset="2106" max-vertical-offset="3600">
+          <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
           <folding>
-            <marker date="1426022924609" expanded="true" signature="4364:5401" placeholder="{...}" />
-            <marker date="1426022924609" expanded="true" signature="4503:4557" placeholder="{...}" />
-            <marker date="1426022924609" expanded="true" signature="4739:4758" placeholder="{...}" />
-            <marker date="1426022924609" expanded="true" signature="5020:5039" placeholder="{...}" />
-            <marker date="1426022924609" expanded="true" signature="5054:5317" placeholder="{...}" />
+            <marker date="1426023438429" expanded="true" signature="4370:5407" placeholder="{...}" />
+            <marker date="1426023438429" expanded="true" signature="4509:4563" placeholder="{...}" />
+            <marker date="1426023438429" expanded="true" signature="4745:4764" placeholder="{...}" />
+            <marker date="1426023438429" expanded="true" signature="5026:5045" placeholder="{...}" />
+            <marker date="1426023438429" expanded="true" signature="5060:5323" placeholder="{...}" />
           </folding>
         </state>
       </provider>
