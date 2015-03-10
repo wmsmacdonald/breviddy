@@ -8,10 +8,10 @@
     preload();
 
     $('#logo-box img').hover(function() {
-                $('#logo').attr('src','/assets/logo-dark.png');
+                $('#logo').attr('src','<%= image_path('logo-dark.png') %>');
             },
             function() {
-                $('#logo').attr('src','/assets/logo.png');
+                $('#logo').attr('src','<%= image_path('logo.png') %>');
             }
     );
     $('.banner-button').hover(function() {
