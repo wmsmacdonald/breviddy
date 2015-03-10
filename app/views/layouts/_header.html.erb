@@ -1,7 +1,7 @@
 <div id="banner">
   <div id="banner-inner">
     <a href="/bits/new"><button id="submit-bit-button" class="banner-button mybtn"><span id="add-icon" class="glyphicon glyphicon-plus"></span> Submit video</button></a>
-    <a href="/"><div id="logo-box"><img id="logo" src="/img/logo.png" /></div></a>
+    <a href="/"><div id="logo-box"><%= image_tag('logo.png', id: 'logo')%></div></a>
     <div id="account-wrapper">
       <% if user_signed_in? %>
           <div id="dropdown-1" class="dropdown">

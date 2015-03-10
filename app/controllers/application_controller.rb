@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #before_action :authenticate_user!
 
+  protected
+
   def not_found(msg = 'Not found.')
     raise ActionController::RoutingError.new(msg)
   end

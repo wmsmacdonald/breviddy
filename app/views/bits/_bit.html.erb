@@ -5,7 +5,7 @@
             --><div id="ytplayer_<%= bit.id %>" class="ytplayer"></div><br><!--
         --></div><!--
         --><div class="bit-button-box"><!--
-            --><button class="bit-button play-full-button" id="play-full-button_<%= bit.id %>"><img src="/img/play-full-video.png"> <span>Play full video</span></button><!--
+            --><button class="bit-button play-full-button" id="play-full-button_<%= bit.id %>"><%= image_tag('play-full-video.png') %> <span>Play full video</span></button><!--
             --><a href="<%= bit.url %>" target="_blank"><button class="bit-button source-button"><i class="fa fa-youtube-play"></i> <span>YouTube</span></button></a><!--
             <% if bit.is_anonymous? %>
                 --><a href="#"><button class="bit-button user-button"><i class="fa fa-user"></i> <span>anonymous</span></button></a><!--

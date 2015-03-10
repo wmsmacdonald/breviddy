@@ -117,7 +117,6 @@ getCookie = (key) -> # Get cookie value from key
   #playOnView(id,player)
 
 onProgress = (currentTime, player, start, end) -> # If the video time is greater than the end time, seek video to the start time
-  console.log(currentTime + ":" + end)
   if currentTime >= end
     player.seekTo(start);
     player.playVideo();
