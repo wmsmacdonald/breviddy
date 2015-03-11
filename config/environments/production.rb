@@ -81,7 +81,7 @@ Rails.application.configure do
   #config.action_mailer.mailgun_settings = {domain: 'stmp.mailgun.org'}
 
 
-  #config.action_mailer.default_url_options = { :host => 'breviddy.com' }
+  config.action_mailer.default_url_options = { :host => 'breviddy.com' }
 
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
