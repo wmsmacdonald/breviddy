@@ -24,7 +24,7 @@ $very-light: #fbf4f4;
   margin-right: auto;
 }
 .irs-slider.from {
-  background: url('/img/bracket.png') no-repeat center !important;
+  background: image-url('bracket.png') no-repeat center !important;
   height: 35px;
   width: 9px;
   border: none;
@@ -36,7 +36,7 @@ $very-light: #fbf4f4;
   background-color: #34344a !important;
 }
 .irs-slider.to {
-  background: url('/img/bracket.png') no-repeat center !important;
+  background: image-url('bracket.png') no-repeat center !important;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
