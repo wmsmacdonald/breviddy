@@ -12,7 +12,7 @@
             <% else %>
                 --><a href="/users/<%= bit.getUsername %>"><button class="bit-button user-button"><i class="fa fa-user"></i> <span class="bit-text"><%= bit.getUsername %></span></button></a><!--
             <% end %>
-            --><button class="bit-button share-button"><i class="fa fa-share-square-o"></i> <span class="bit-text">Share</span></button>
+            --><button id="share-button_<%= bit.id %>" class="bit-button share-button" data-toggle="modal" data-target="#myModal"><i class="fa fa-share-square-o"></i> <span class="bit-text">Share</span></button>
     </div><!--
 --></div>
 
@@ -65,5 +65,15 @@
             window.player_functions.shift().call();
         }
     }
+
+    $(document).ready(function() {
+       $('#share-button_<%= bit.id %>').click(function() {
+            $('#modal-body').html('<br>&nbsp;<a href="http://www.facebook.com/share.php?u=http://breviddy.com/bits/<%= bit.id %>" onClick="return fbs_click()" target="_blank"><button>Facebook</button></a><br><br>' +
+            '&nbsp;<a href="http://www.reddit.com/submit?v=5&noui&jump=close&url=http://breviddy.com/bits/<%= bit.id %>&title=<%= bit.title %>" target="_blank"><button>Reddit</button></a><br><br>' +
+            '&nbsp;<a href="https://twitter.com/intent/tweet?url=http://breviddy.com/bits/<%= bit.id %>" target="_blank"><button>Twitter</button></a><br><br>' +
+            '&nbsp;<a href="http://www.tumblr.com/share/link?url=http://breviddy.com/bits/<%= bit.id%>"><button>Tumblr</button></a><br><br>'
+            );
+       });
+    });
 
 </script>

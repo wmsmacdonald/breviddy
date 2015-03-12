@@ -221,9 +221,13 @@ i.mute-bit-icon {
   background-color: $very-light;
   border: none;
   border-left: 2px solid #ccc5c5;
+  outline: none;
 }
 .bit-button:hover .bit-text {
   text-decoration: underline;
+}
+.bit-button:active {
+  outline: none;
 }
 
 #full-video-icon {
@@ -279,4 +283,7 @@ i.mute-bit-icon {
   position: fixed; /* keeps it on the bottom once in view */
   bottom: 30px; /* height of link element */
   right: 30px; /* padding from the left side of the window */
+}
+.alert {
+  z-index: 1;
 }
