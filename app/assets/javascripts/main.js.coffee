@@ -21,6 +21,9 @@ $ ->
   , ->
     $(this).removeClass('banner-button-selected')
 
+  $('#submit-bit-button').click ->
+    mixpanel.track("Submit bit button click")
+    console.log("mixpanel")
 
 `
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

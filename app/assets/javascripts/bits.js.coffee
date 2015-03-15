@@ -126,7 +126,7 @@ $(window).on 'DOMContentLoaded load resize scroll', ->
 
 window.isPlaying = false
 @onVisibilityChange = () ->
-  for own key, value of window.players
+  for own key, value of window.players when window.players[key] isnt null
     divName = '#video--mute-box_' + window.players[key].id
     if $(divName).isOnScreen(1, 0.7) and !window.isPlaying
       window.players[key].playVideo()
@@ -134,16 +134,16 @@ window.isPlaying = false
     else if window.players[key].onFirstSeekDone
       window.players[key].pauseVideo()
       window.isPlaying = false
-
+###
+ MIXPANEL
 ###
 $ ->
-  $('.bit-button').hover( ->
-    # Underline animation for buttons under player
-    $(this).children("span").toggleClass("underline")
-    return
-  )
-  return
-###
+  $('.play-full-button').click ->
+    mixpanel.track("Full video button")
+  $('.source-button').click ->
+    mixpanel.track("Youtube button")
+
+
 ###
  IS ON SCREEN FUNCTION
 ###
