@@ -13,7 +13,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     @feedback.save
     flash[:notice] = "Thank you for the feedback! I will use it to make this website better."
-    redirect_to '/bits'
+    redirect_to '/'
   end
 
 

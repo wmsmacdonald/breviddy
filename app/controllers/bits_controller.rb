@@ -50,7 +50,7 @@ class BitsController < ApplicationController
 
   def destroy
     Bit.destroy(params[:id])
-    redirect_to '/bits/index'
+    redirect_to '/'
     flash[:notice] = "Video bit was successfully deleted."
   end
 
