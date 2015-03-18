@@ -14,14 +14,14 @@
   <div id="sliders-box">
       <div class="field">
         <p class="feedback-label">How much do you enjoy this website?</p>
+        <%= f.number_field :enjoyment, class: 'slider' %>
+      </div>
+      <div class="field">
+        <p class="feedback-label">How much do you like the design?</p>
         <%= f.number_field :design, class: 'slider' %>
       </div>
       <div class="field">
-        <%= f.label :design %><br>
-        <%= f.number_field :design, class: 'slider' %>
-      </div>
-      <div class="field">
-        <%= f.label :ease_of_use %><br>
+        <p class="feedback-label">How easy is it to use the website?</p>
         <%= f.number_field :ease_of_use, class: 'slider' %>
       </div>
   </div>
@@ -30,8 +30,11 @@
     <%= f.text_area :bugs %>
   </div>
   <div class="field">
-    <p class="feedback-label">How did you get here?</p>
-    <%= f.text_field :channel %>
+    <p class="feedback-label">How did you get to breviddy?</p>
+    <%= f.radio_button :channel, 'Quotacle' %> Quotacle<br>
+    <%= f.radio_button :channel, 'Search engine' %> Search engine<br>
+    <%= f.radio_button :channel, 'I told you to go here' %> I told you to go here<br>
+    <%= f.radio_button :channel, 'Other' %> Other<br><br>
   </div>
   <div class="field">
     <p class="feedback-label">What should I do to improve the website?</p>
