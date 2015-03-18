@@ -1,0 +1,88 @@
+$primary-color: #a63131;
+$secondary-color: #34344a;
+$dark-grey: #515459;
+$very-light: #fbf4f4;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+div#page {
+  height: 100%;
+}
+div#content {
+  width: 700px;
+  background-color: $very-light;
+  overflow: hidden;
+  z-index: 1;
+  height: 100%;
+  display: block;
+  $border: 5px solid #8c8c8c;
+  border-left: $border;
+  border-right: $border;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -4.6em;
+  margin-bottom: -0.3em;
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+div#inner-content {
+  padding-top: 5px;
+  width: 600px;
+  margin: 0 auto 20px auto;
+  z-index: 2;
+  position: relative;
+}
+h2 {
+  margin-top: 0px;
+  padding-top: 5px;
+}
+input[type="submit"] {
+  width: 200px;
+  background: linear-gradient(#606086, $secondary-color);
+  border: none;
+  color: $very-light;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 5px;
+  outline: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+  margin: 8px 0 12px 0;
+
+}
+input[type="submit"]:hover {
+  background: linear-gradient($secondary-color, #606086);
+}
+input[type="password"], input[type="email"], input[type="text"] {
+  outline: none;
+  width: 300px;
+  border-radius: 4px;
+  border-top: 2px solid #bbb7b5;
+  border-left: 2px solid #bbb7b5;
+  border-bottom: 1px solid #ccc8c6;
+  border-right: 1px solid #ccc8c6;
+  padding: 3px 0 3px 4px;
+  height: 2em;
+  font-size: 1.2em;
+  background-color: #fbf4f4;
+  margin: 8px 0 12px 0;
+}
+input#resend-confirmation-button {
+  width: 300px;
+}
+textarea {
+  width: 500px;
+  outline: none;
+  border-radius: 4px;
+  border-top: 2px solid #bbb7b5;
+  border-left: 2px solid #bbb7b5;
+  border-bottom: 1px solid #ccc8c6;
+  border-right: 1px solid #ccc8c6;
+  padding: 3px 0 3px 4px;
+  height: 8em;
+  font-size: 1.2em;
+  background-color: #fbf4f4;
+  margin: 8px 0 12px 0;
+}

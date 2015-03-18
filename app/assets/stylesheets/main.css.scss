@@ -138,9 +138,23 @@ h3#motto {
 .mybtn:focus {
   outline: none !important;
 }
-
-
 .alert {
   position: relative;
   z-index: 5;
+}
+#footer {
+  background-color: $very-light;
+  position: fixed;
+  padding: 7px 5px;
+  left: 30px;
+  font-size: 1.6em;
+  bottom: 30px;
+  border-radius: 4px;
+}
+#footer a {
+  color: #333333;
+  padding: 3px 7px;
+}
+#footer a:first-child {
+  border-right: 1px solid #ccc5c5;
 }

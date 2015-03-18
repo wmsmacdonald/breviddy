@@ -10,6 +10,9 @@ Rails.application.config.assets.version = '1.0'
 %w( bits pages feedbacks ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css", "#{controller}.js"]
 end
+%w( pages feedbacks ).each do |controller|
+  Rails.application.config.assets.precompile += ["fixed_page.css"]
+end
 %w( devise users ).each do |controller|
   Rails.application.config.assets.precompile += ["users.js.coffee", "users.css", "users.js"]
 end
