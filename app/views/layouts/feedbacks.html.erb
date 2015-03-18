@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
   <title>breviddy - bits of videos around the internet</title>
-  <%= stylesheet_link_tag 'application', 'users', media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag 'application', 'users', 'feedbacks', media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="/font-awesome-4.2.0/css/font-awesome.min.css">
@@ -16,8 +16,9 @@
 <div id="content">
 </div>
 <div id="inner-content">
-  <%= yield %>
+<%= yield %>
 </div>
+
 
 <%= render 'layouts/footer' %>
 

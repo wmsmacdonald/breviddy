@@ -7,7 +7,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css.sass, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-%w( bits ).each do |controller|
+%w( bits pages feedbacks ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js.coffee", "#{controller}.css", "#{controller}.js"]
 end
 %w( devise users ).each do |controller|

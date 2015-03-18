@@ -1,0 +1,70 @@
+<%= form_for(@feedback) do |f| %>
+  <% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+      <ul>
+      <% @feedback.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="sliders-box">
+      <div class="field">
+        <p class="feedback-label">How much do you enjoy this website?</p>
+        <%= f.number_field :design, class: 'slider' %>
+      </div>
+      <div class="field">
+        <%= f.label :design %><br>
+        <%= f.number_field :design, class: 'slider' %>
+      </div>
+      <div class="field">
+        <%= f.label :ease_of_use %><br>
+        <%= f.number_field :ease_of_use, class: 'slider' %>
+      </div>
+  </div>
+  <div class="field">
+    <p class="feedback-label">Did you find any bugs? (Eg. missing pages, design glitches, ants)</p>
+    <%= f.text_area :bugs %>
+  </div>
+  <div class="field">
+    <p class="feedback-label">How did you get here?</p>
+    <%= f.text_field :channel %>
+  </div>
+  <div class="field">
+    <p class="feedback-label">What should I do to improve the website?</p>
+    <%= f.text_area :suggestions %>
+  </div>
+  <div class="field">
+    <p class="feedback-label">May I email you to discuss Breviddy?</p>
+    <input id="yesallemails" type="radio" name="email?"> Yes<br>
+    <input type="radio" name="email?"> No<br><br>
+  </div>
+  <div class="field" id="email-field">
+    <p class="feedback-label">Cool! What's your email?</p>
+    <%= f.email_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit Feedback' %>
+  </div>
+  <script type="text/javascript">
+    $('#email-field').hide();
+    $('#yesallemails').click(function() {
+        $('#email-field').show();
+    });
+  </script>
+<% end %>
+
+<script type="application/javascript">
+    $('.slider').ionRangeSlider({
+        max: 10,
+        min: 1,
+        grid: true,
+        step: 1,
+        grid_num: 9,
+        from: 5
+    });
+
+</script>

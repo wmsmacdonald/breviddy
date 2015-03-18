@@ -20,17 +20,20 @@ div#content {
   $border: 5px solid #8c8c8c;
   border-left: $border;
   border-right: $border;
-  position: relative;
   margin-left: auto;
   margin-right: auto;
   margin-top: -4.6em;
-  padding-top: 4.6em;
   margin-bottom: -0.3em;
+  position: fixed;
+  right: 0;
+  left: 0;
 }
 div#inner-content {
-  margin-left: 40px;
-  padding-bottom: 20px;
-  margin-top: 10px;
+  padding-top: 5px;
+  width: 600px;
+  margin: 0 auto 20px auto;
+  z-index: 2;
+  position: relative;
 }
 h2 {
   margin-top: 0px;
@@ -68,4 +71,18 @@ input[type="password"], input[type="email"], input[type="text"] {
 }
 input#resend-confirmation-button {
   width: 300px;
+}
+textarea {
+  width: 500px;
+  outline: none;
+  border-radius: 4px;
+  border-top: 2px solid #bbb7b5;
+  border-left: 2px solid #bbb7b5;
+  border-bottom: 1px solid #ccc8c6;
+  border-right: 1px solid #ccc8c6;
+  padding: 3px 0 3px 4px;
+  height: 8em;
+  font-size: 1.2em;
+  background-color: #fbf4f4;
+  margin: 8px 0 12px 0;
 }

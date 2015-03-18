@@ -1,0 +1,23 @@
+// Place all the styles related to the Feedbacks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#sliders-box {
+  width: 400px;
+}
+.feedback-label {
+  font-weight: bold;
+}
+#content {
+  position: fixed !important;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
+
+}
+#inner-content {
+  width: 600px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+}

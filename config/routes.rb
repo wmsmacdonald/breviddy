@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :feedbacks
+
   devise_for :users
 
   get 'bits/index'
@@ -8,7 +10,8 @@ Rails.application.routes.draw do
 
   match 'users/:username' => 'bits#user', via: :get
   match 'search' => 'bits#search', via: :get
-  match 'about' => 'about#index', via: :get
+  match 'about' => 'pages#about', via: :get
+  match 'feedback' => 'feedbacks#new', via: :get
 
 
 
