@@ -2,10 +2,7 @@ class BitsController < ApplicationController
   def new
   end
 
-  #before_filter :authenticate_user!,
-  #              :only => [:new]
   def create
-
     if user_signed_in?
       @bit = current_user.bits.create(signed_in_bit_params)
     else
@@ -18,7 +15,6 @@ class BitsController < ApplicationController
       key, value = @bit.errors.messages.first
       redirect_to "/bits/new", alert: "Error: '#{key.capitalize}' field  #{value[0]}."
     end
-
   end
 
   def show
@@ -28,15 +24,15 @@ class BitsController < ApplicationController
   end
 
   def index
-
-      @bits = Bit.paginate(page: params[:page]).order('created_at DESC')
-      set_bit_dependents(@bits)
-      respond_to do |format|
-        format.html
-        format.js
-      end
+    @bits = Bit.paginate(page: params[:page]).order('created_at DESC')
+    set_bit_dependents(@bits)
+    respond_to do |format|
+      format.html
+      format.js
+    end
 
     mute_cookie
+
   end
 
   def search
@@ -78,6 +74,12 @@ class BitsController < ApplicationController
     end
     hash[:user_id] = '0'
     hash
+  end
+
+  def mute_cookie
+    if cookies[:muted].blank?
+      cookies[:muted] = true
+    end
   end
 
 end

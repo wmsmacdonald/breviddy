@@ -17,3 +17,6 @@
 
 # MySQL config
 /config/database.yml
+
+# IDE files
+/.idea/*

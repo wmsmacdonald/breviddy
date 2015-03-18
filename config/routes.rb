@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   match 'users/:username' => 'bits#user', via: :get
   match 'search' => 'bits#search', via: :get
+  match 'about' => 'about#index', via: :get
 
 
 

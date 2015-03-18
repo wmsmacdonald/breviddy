@@ -1,5 +1,16 @@
 <h3 id="motto">The best bits of videos around the internet</h3>
 
+<div id="about-super-box">
+    <div id="about-box">
+      <h4>Gifs, but better:</h4>
+      <ul>
+        <li>Instantly access the source video</li>
+        <li>Watch in the highest possible quality</li>
+        <li><%= link_to 'Easy to make', 'bits/new' %> - no converting needed</li>
+      </ul>
+    </div>
+</div>
+
 <div id="search-super-box">
   <%= form_tag('/search', :method => "get", id: "search-form") do %>
       <div class="search-box">
@@ -49,5 +60,12 @@
             offset: {top:800}
         });
     }
+    if (getCookie("return_visit") === "true") {
+        $('#about-super-box').hide();
+        $('#search-super-box').show();
+    }
+    else {
+        $('#about-super-box').show();
+        document.cookie = "return_visit=true; expires=Tue, 19 Jan 2038 03:14:07 GMT";
+    }
 </script>
-

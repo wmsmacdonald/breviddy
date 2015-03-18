@@ -44,12 +44,6 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def mute_cookie
-    if cookies[:muted].blank?
-      cookies[:muted] = true
-    end
-  end
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

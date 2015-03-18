@@ -30,18 +30,18 @@ isPlaying = false;
 
 @onPlayerStateChange = (event, id, player, start) -> # Seeks to start and pauses if not on screen
 
-  if event.data == 1 and not player.onFirstSeekDone # Checks if event is valid and onFirstSeek hasn't been marked done
+  if event.data == 1 and not player.isFirstSeekDone # Checks if event is valid and onFirstSeek hasn't been marked done
 
     onFirstSeek = () -> # Pause player and mark done
 
-      player.onFirstSeekDone = true # Mark done
+      player.isFirstSeekDone = true # Mark done
 
     if not $('#bit-box_' + id).isOnScreen(1, 0.8)  # Checks if player is not on screen
       player.pauseVideo();
 
     onFirstSeek()
 
-getCookie = (key) -> # Get cookie value from key
+@getCookie = (key) -> # Get cookie value from key
   cookieArray = document.cookie.split(';');
 
   for cookie in cookieArray when $.trim(cookie.split('=')[0]) is key
@@ -91,7 +91,7 @@ getCookie = (key) -> # Get cookie value from key
       console.log("unmute");
       displayUnMuted()
 
-      for own key, value of window.players
+      for own key, value of window.players when window.players[key] isnt null
         window.players[key].unMute();
 
       document.cookie = "muted=false"
@@ -100,7 +100,7 @@ getCookie = (key) -> # Get cookie value from key
       console.log("mute");
       displayMuted()
 
-      for own key, value of window.players
+      for own key, value of window.players when window.players[key] isnt null
         window.players[key].mute();
 
       document.cookie = "muted=true"
@@ -123,17 +123,20 @@ onProgress = (currentTime, player, start, end) -> # If the video time is greater
 
 $(window).on 'DOMContentLoaded load resize scroll', ->
   onVisibilityChange();
+  return
 
 window.isPlaying = false
 @onVisibilityChange = () ->
-  for own key, value of window.players when window.players[key] isnt null
-    divName = '#video--mute-box_' + window.players[key].id
-    if $(divName).isOnScreen(1, 0.7) and !window.isPlaying
-      window.players[key].playVideo()
-      window.isPlaying = true
-    else if window.players[key].onFirstSeekDone
-      window.players[key].pauseVideo()
-      window.isPlaying = false
+  for own key, value of window.players
+    if window.players[key] isnt null and not window.players[key].isFullyPlaying
+      divName = '#video--mute-box_' + window.players[key].id
+      if $(divName).isOnScreen(1, 0.7) and !window.isPlaying
+        window.players[key].playVideo()
+        window.isPlaying = true
+      else if window.players[key].isFirstSeekDone
+        window.players[key].pauseVideo()
+        window.isPlaying = false
+
 ###
  MIXPANEL
 ###

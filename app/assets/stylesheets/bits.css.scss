@@ -210,17 +210,19 @@ i.mute-bit-icon {
 }
 .bit-button-box {
   margin-top: 0.5em;
-  border-top: 2px solid #ccc5c5;
-  border-bottom: 2px solid #ccc5c5;
+  //border-top: 2px solid #ccc5c5;
+  //border-bottom: 2px solid #ccc5c5;
   border-radius: 0.1em;
 }
 .bit-button {
-  height: 2.5em;
+  height: 2.8em;
   color: #333333;
   border-radius: 0;
   background-color: $very-light;
   border: none;
   border-left: 2px solid #ccc5c5;
+  border-top: 2px solid #ccc5c5;
+  border-bottom: 2px solid #ccc5c5;
   outline: none;
 }
 .bit-button:hover .bit-text {
@@ -286,4 +288,47 @@ i.mute-bit-icon {
 }
 .alert {
   z-index: 1;
+}
+/*
+ INDEX
+*/
+#about-super-box {
+  text-align: center;
+}
+#about-box {
+  background-color: #fbf4f4;
+  color: #34344a;
+  padding: 7px 65px 10px 40px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: left;
+  margin: -10px 0 0 0;
+  font-family: 'Cabin', sans-serif;
+}
+#search-super-box {
+  text-align: center;
+  display: none;
+}
+#search-box {
+  display: inline-block;
+}
+#search-input {
+  border: 2px solid #868898;
+  border-radius: 0.4em;
+  padding: 0 0.7em;
+  outline: none;
+  width: 478px;
+  height: 2em;
+  font-size: 1.2em;
+  background-color: #fbf4f4;
+}
+#search-icon {
+  position: absolute;
+  font-size: 1.5em;
+  overflow: visible;
+  margin-left: -1.55em;
+  /*margin-top: 0.36em;*/
+  color: $secondary-color;
+  border: none;
+  background: none;
 }

@@ -54,6 +54,10 @@ gem 'mailgunner'
 
 gem 'mailgun-ruby', require: 'mailgun'
 
+#gem 'ahoy_matey'
+
+gem 'activeuuid', '>= 0.5.0'
+
 #gem 'searchkick'
 
 #gem 'elasticsearch-model'

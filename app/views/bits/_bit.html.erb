@@ -5,12 +5,12 @@
             --><div id="ytplayer_<%= bit.id %>" class="ytplayer"></div><br><!--
         --></div><!--
         --><div class="bit-button-box"><!--
-            --><button class="bit-button play-full-button" id="play-full-button_<%= bit.id %>"><%= image_tag('play-full-video.png') %> <span class="bit-text">Play full video</span></button><!--
-            --><a href="<%= bit.url %>" target="_blank"><button class="bit-button source-button"><i class="fa fa-youtube-play"></i> <span class="bit-text">YouTube</span></button></a><!--
+            --><button class="bit-button play-full-button" id="play-full-button_<%= bit.id %>"><i class="fa fa-step-backward"></i> <span class="bit-text">Watch full video</span></button><!--
+            --><a href="<%= bit.url %>" target="_blank"><button class="bit-button source-button" title="Open the source video on YouTube"><i class="fa fa-youtube-play"></i> <span class="bit-text">YouTube</span></button></a><!--
             <% if bit.is_anonymous? %>
                 --><a href="#"><button class="bit-button user-button"><i class="fa fa-user"></i> <span class="bit-text">anonymous</span></button></a><!--
             <% else %>
-                --><a href="/users/<%= bit.getUsername %>"><button class="bit-button user-button"><i class="fa fa-user"></i> <span class="bit-text"><%= bit.getUsername %></span></button></a><!--
+                --><a href="/users/<%= bit.getUsername %>"><button class="bit-button user-button" title="Click to see this user's submissions"><i class="fa fa-user"></i> <span class="bit-text"><%= bit.getUsername %></span></button></a><!--
             <% end %>
             --><button id="share-button_<%= bit.id %>" class="bit-button share-button" data-toggle="modal" data-target="#myModal"><i class="fa fa-share-square-o"></i> <span class="bit-text">Share</span></button>
     </div><!--
@@ -36,6 +36,7 @@
                 }
             }
         });
+        window.players.player_<%= bit.id %>.isFullyPlaying = false;
 
         $('#play-full-button_<%= bit.id %>').click(function () {
             $('#ytplayer_<%= bit.id %>').replaceWith('<div id="ytplayer_<%= bit.id %>" class="ytplayer"></div>');
@@ -51,6 +52,7 @@
                     }
                 }
             });
+            window.players.player_<%= bit.id %>.isFullyPlaying = true;
         });
         window.players.player_<%= bit.id %>.onFirstSeekDone = false;
         window.players['player_<%= bit.id %>'].id = <%= bit.id %>;
