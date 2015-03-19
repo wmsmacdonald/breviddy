@@ -12,6 +12,9 @@ class FeedbacksController < ApplicationController
     @feedback.save
     flash[:notice] = "Thank you for the feedback! I will use it to make this website better."
     redirect_to '/'
+
+    UserMailer.feedback_alert(@feedback).deliver
+
   end
 
 

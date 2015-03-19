@@ -12,8 +12,6 @@ $(document).ready(function() {
 
 function urlEnter() {
 
-    console.log("enter");
-
     resetHTML();
 
     setTimeout(function () { // slight delay so the input enter works #messyworkarounds
@@ -27,8 +25,10 @@ function urlEnter() {
             if (urlId === true) {
                 return false;
             }
-            console.log("new player");
-            var embedSuccess = true;
+
+            var embedSuccess = true; // whether the YouTube player embed was successful (default true)
+
+            // Create a YT player in <div#ytplayer>
             window.player = new YT.Player('ytplayer', {
                 height: '300',
                 width: '450',
@@ -36,7 +36,6 @@ function urlEnter() {
                 playerVars: {'iv_load_policy': 3, 'controls': 0, 'rel': 1, 'showinfo': 1},
                 events: {
                     'onReady': function () {
-                        console.log("player ready");
                         onPlayerReady();
                     },
                     'onError': function (data) {
@@ -77,7 +76,7 @@ function onPlayerReady() {
 
     trimVideoHTML();
 
-} // end onPlayerReady()
+}
 
 function resetHTML() { // only display the url input
 
