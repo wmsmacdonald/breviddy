@@ -1,11 +1,9 @@
 class FeedbacksController < ApplicationController
-
   respond_to :html
-
 
   def new
     @feedback = Feedback.new
-    respond_with(@feedback)
+    #respond_with(@feedback)
   end
 
 

@@ -14,6 +14,11 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= stub new_bit
+//= stub pages
+//= stub feedbacks
+//= stub bits
+//= stub pagination
 //= require_tree .
 
 

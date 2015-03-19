@@ -1,4 +1,7 @@
 class BitsController < ApplicationController
+  include BitsHelper
+  before_action :mute_cookie
+
   def new
   end
 
@@ -20,7 +23,6 @@ class BitsController < ApplicationController
   def show
     @bits = Bit.find params[:id].split(',')
     set_bit_dependents(@bits)
-    mute_cookie
   end
 
   def index
@@ -31,14 +33,11 @@ class BitsController < ApplicationController
       format.js
     end
 
-    mute_cookie
-
   end
 
   def search
     @bits = Bit.search(params[:search]).order('created_at DESC')
     set_bit_dependents(@bits)
-    mute_cookie
   end
 
   def user
@@ -52,34 +51,6 @@ class BitsController < ApplicationController
     Bit.destroy(params[:id])
     redirect_to '/'
     flash[:notice] = "Video bit was successfully deleted."
-  end
-
-  private
-  def signed_in_bit_params
-    hash = params.require(:bit).permit(:url, :start, :title, :end, :urlId)
-    begin
-      hash[:urlId] = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(params[:bit].permit(:url)[:url])[1]
-    rescue NoMethodError
-      #do nothing
-    end
-    hash
-  end
-
-  def signed_out_bit_params
-    hash = params.require(:bit).permit(:url, :start, :title, :end, :urlId)
-    begin
-      hash[:urlId] = /^(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?([\w-]{10,})/.match(params[:bit].permit(:url)[:url])[1]
-    rescue NoMethodError
-      #do nothing
-    end
-    hash[:user_id] = '0'
-    hash
-  end
-
-  def mute_cookie
-    if cookies[:muted].blank?
-      cookies[:muted] = true
-    end
   end
 
 end

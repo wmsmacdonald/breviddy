@@ -1,4 +1,5 @@
 include BitsHelper
+include ActiveModel::Validations
 
 class Bit < ActiveRecord::Base
 
@@ -20,7 +21,7 @@ class Bit < ActiveRecord::Base
   validates :start, presence: true
   validates :end, presence: true
 
-  validates_with YTLinkValidator
+  validates_with YTLinkValidator, on: :create
 
   def setUsername(username)
     @username = username

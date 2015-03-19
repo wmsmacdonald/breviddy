@@ -5,257 +5,32 @@
     <% flash.now[:notice] = ('This video bit will be submitted anonymously. '+ link_to('Sign up', new_user_registration_path) +
             ' or '+link_to('login', new_user_session_path)+' to see all your submitted video bits.').html_safe %>
 <% end %>
-
+<%= javascript_include_tag 'new_bit' %>
 <div id="super-box">
     <div id="upper-spacer"></div>
     <h3 id="url-instructions">Paste a YouTube video URL</h3>
     <div id="url-box"><input id="url-input" type="text" onClick="this.setSelectionRange(0, this.value.length)" autofocus="true"/></div>
-    <%= link_to 'Back', :back %>
     <div id="ytplayer-box"><div id="ytplayer"></div></div>
-    <h3 id="trim-instructions"></h3>
-    <div id="controls-box"></div>
-    <div id="form-box"></div>
+    <h3 id="trim-instructions">Trim the video with the brackets to create a video bit</h3>
+    <div id="controls-box">
+      <div id="control-buttons-box">
+        <button id="toggle-play-button"><i class="fa fa-play fa-2x"></i></button><!--
+        --><button id="toggle-mute-button"><i class="fa fa-volume-up fa-2x"></i></button>
+        </div>
+      <div id="sliders-box">
+          <div id="seek-slider-box"><input id="seek-slider" type="text"></div>
+          <div id="cut-slider-box"><input id="cut-slider" type="text"></div>
+      </div>
+    </div>
+    <div id="form-box">
+      <%= form_for :bit, url: bits_path do |f| %>
+          <%= f.hidden_field :url %>
+          <%= f.hidden_field :start %>
+          <%= f.hidden_field :end %>
+          <br>
+          <%= f.submit value: "Submit video bit", id: "save-bit-button" %>
+          <% end %>
+    </div>
+    <!--<%= link_to 'Back', :back, id: 'back-link' %>-->
 </div>
-<script type="text/javascript">
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    scriptArray = document.getElementsByTagName('script')
-    var firstScriptTag = scriptArray[scriptArray.length - 1];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    function reset() {
-        $('#ytplayer-box').html('<div id="ytplayer"></div>');
-        $('#seek-slider-box').html('');
-        $('#cut-slider-box').html('');
-        $('#form-box').html('');
-        $('#caption-input').val('');
-        if (typeof window.id !== 'undefined') {
-            window.clearInterval(window.id);
-        }
-    }
-
-    $(document).ready(function() {
-        window.isStart = true;
-        $('#url-input').on("paste", urlEnter);
-        $('#url-input').on("enterKey", urlEnter);
-        $('#url-input').keyup(function(e){
-            if(e.keyCode == 13)
-            {
-                $(this).trigger("enterKey");
-            }
-        });
-        function urlEnter() {
-            setTimeout(function () {
-                if (window.isStart) {
-                    $('#url-instructions').hide();
-                    $('#trim-instructions').html('Trim the video with the brackets to create a video bit');
-                    $('#upper-spacer').animate({
-                        height: "10px"
-                    }, 300, function () {
-                        showVideo();
-                    });
-                }
-                else {
-                    showVideo();
-                }
-
-                function showVideo() {
-                    reset();
-
-                    function parseYTUrl(url) {
-                        regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                        match = url.match(regExp);
-                        if (match && match[2].length == 11) {
-                            return match[2];
-                        }
-                        else {
-                            return false;
-                        }
-                    }
-
-                    url = $('#url-input').val();
-                    urlId = parseYTUrl(url);
-
-                    if (parseYTUrl(url) == false) {
-                        onError("Is this really a YouTube link?");
-                        return;
-                    }
-                    else {
-                        url = "https://gdata.youtube.com/feeds/api/videos/" + urlId + "?v=2&alt=json";
-                        $.getJSON(url, function (data) {
-                            $('#video-title-box').html(data.entry.title.$t);
-                            window.duration = data.entry.media$group.yt$duration.seconds;
-                            window.player.title = data.entry.title.$t;
-                        });
-                        window.videoError = false;
-                        window.player = new YT.Player('ytplayer', {
-                            height: '300',
-                            width: '450',
-                            videoId: urlId,
-                            playerVars: {'iv_load_policy': 3, 'controls': 0, 'rel': 1, 'showinfo': 1},
-                            events: {
-                                'onReady': function () {
-                                    onPlayerReady();
-                                },
-                                'onError': function (data) {
-                                    console.log("error");
-                                    window.videoError = true;
-                                    onError("This video cannot be embedded. Please choose another video.");
-                                },
-                                'onStateChange': function (data) {
-                                    if (player.getPlayerState() == 1) {
-                                        // change icon to play
-                                        $('#toggle-play-button').html('<i class="fa fa-pause fa-2x"></i>');
-                                    }
-                                    else {
-                                        $('#toggle-play-button').html('<i class="fa fa-play fa-2x"></i>');
-                                    }
-                                }
-                            }
-                        });
-                        window.clicked = false;
-                        $('#caption-input').show().css('display','inline-block').click(function() {
-                            window.clicked = true;
-                           $(this).html('<input id="caption-input" autofocus />');
-                        });
-                    }
-                }
-
-            }, 0);
-        }
-
-    });
-    function onPlayerReady() {
-        window.player.playVideo();
-        window.player.unMute();
-        window.slidertime = 0;
-        if (!window.videoError) {
-
-            $('#controls-box').html(
-            '<div id="control-buttons-box">' +
-                '<button id="toggle-play-button"><i class="fa fa-play fa-2x"></i></button><!--' +
-                '--><button id="toggle-mute-button"><i class="fa fa-volume-up fa-2x"></i></button>' +
-                '</div>' +
-                '<div id="sliders-box">' +
-                '<div id="seek-slider-box"><input id="seek-slider" type="text"></div>' +
-                '<div id="cut-slider-box"><input id="cut-slider" type="text"></div>' +
-            '</div>');
-            $('#seek-slider').ionRangeSlider({
-                max: window.duration,
-                min: 0,
-                hide_min_max: true,
-                hide_from_to: true,
-                onStart: function(data) {
-                    window.seeking = false;
-                },
-                onFinish: function(data) {
-                    window.player.seekTo(Math.round(window.slidertime));
-                    setTimeout(function() {
-                        window.seeking = false;
-                    }, 100);
-                },
-                onChange: function(data) {
-                    window.slidertime = data.from;
-                    window.seeking = true;
-                },
-                onUpdate: function(data) {
-                    window.slidertime = data.from;
-                }
-            });
-
-            window.slider_to_time = 0;
-            window.seek_slider = $("#seek-slider").data("ionRangeSlider");
-            $('#cut-slider').ionRangeSlider({
-                type: "double",
-                min: 0,
-                max: window.duration,
-                prettify: function (num) {
-                    minutes = Math.floor(num / 60).toString();
-                    seconds = (num - minutes * 60).toString();
-                    if (minutes.length == 1) {
-                        minutes = "0" + minutes;
-                    }
-                    if (seconds.length == 1) {
-                        seconds = "0" + seconds;
-                    }
-                    return minutes+":"+seconds;
-                },
-                hide_min_max: true,
-                min_interval: 2,
-                onFinish: function(data) {
-                    $('#bit_start').val(Math.round(data.from));
-                    $('#bit_end').val(Math.round(data.to));
-                    if (data.from !== window.slider_to_time) {
-                        window.player.seekTo(Math.round(data.from));
-                        window.player.playVideo();
-                        window.slider_to_time = data.from;
-                    }
-                }
-            });
-            $('.triangle').css({"border": "none"});
-            window.id = window.setInterval(moveSlider, 100);
-            function moveSlider() {
-                videotime = Math.round(window.player.getCurrentTime());
-                slidertime = Math.round(window.slidertime);
-                endtime = Math.round($('#bit_end').val());
-
-                if (videotime >= endtime || window.player.getPlayerState() == 0) {
-                    window.player.seekTo($('#bit_start').val());
-                }
-                if (videotime != slidertime & !window.seeking) {
-                    window.seek_slider.update({
-                       from: videotime
-                    });
-                }
-            }
-            $('#form-box').html(
-                '<%= form_for :bit, url: bits_path do |f| %>' +
-                    '<%= f.hidden_field :url %>'+
-                    '<%= f.hidden_field :start %>'+
-                    '<%= f.hidden_field :end %>' +
-                    '<%= f.hidden_field :title %><br>' +
-                    '<%= f.submit value: "Submit video bit", id: "save-bit-button" %>' +
-                '<% end %>'
-            );
-            $('#bit_url').val($('#url-input').val());
-            $('#bit_start').val(0);
-            $('#bit_end').val(window.duration);
-            $('#bit_title').val(window.player.title);
-
-            $('#toggle-play-button').click(function() {
-                if (player.getPlayerState() == 1) {
-                    window.player.pauseVideo();
-                }
-                else {
-                    window.player.playVideo();
-                }
-
-            });
-            $('#toggle-mute-button').click(function() {
-                if (player.isMuted()) {
-                    window.player.unMute();
-                    $(this).html('<i class="fa fa-volume-up fa-2x"></i>');
-                }
-                else {
-                    window.player.mute();
-                    $(this).html('<i class="fa fa-volume-off fa-2x"></i><i class="fa fa-close"></i>');
-
-                }
-
-            });
-
-        }
-
-
-    }
-
-    function onError(msg) {
-        reset();
-        $('#url-instructions').show();
-        $('#super-box').before('<p class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+msg+'</span></p>');
-    }
-
-
-
-
-</script>
