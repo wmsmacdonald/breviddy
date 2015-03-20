@@ -103,12 +103,13 @@ function trimVideoHTML() { // display the UI for trimming the video
     window.player.playVideo();
     window.player.unMute();
     window.slidertime = 0;
+    window.player.duration = Math.floor(player.getDuration());
 
     $('#seek-slider-box').html('<input id="seek-slider" type="text">');
     $('#cut-slider-box').html('<input id="cut-slider" type="text">');
 
     $('#seek-slider').ionRangeSlider({
-        max: window.duration,
+        max: window.player.duration,
         min: 0,
         hide_min_max: true,
         hide_from_to: true,
@@ -135,7 +136,7 @@ function trimVideoHTML() { // display the UI for trimming the video
     $('#cut-slider').ionRangeSlider({
         type: "double",
         min: 0,
-        max: window.duration,
+        max: window.player.duration,
         prettify: function (num) {
             minutes = Math.floor(num / 60).toString();
             seconds = (num - minutes * 60).toString();
