@@ -20,5 +20,10 @@
 
 /config/
 
+/Gemfile.lock
+
+/.capistrano/
+
+
 # IDE files
 /.idea/*
